@@ -9,8 +9,7 @@ Um projeto de extensão se cadastra, assim como os alunos, e ao precisar de um a
 
 ### Atividade AA-1: Sistema para agendamento de entrevistas para projetos de extensão
 
-O sistema deve possuir um cadastro de projetos de extensão, com os seguintes dados: nome do projeto, e-mail e senha.
-
+O sistema deve possuir um cadastro de projetos de extensão, com os seguintes dados: nome do projeto, e-mail, senha e nome do professor responsável.
 O sistema deve possuir um cadastro de alunos, com os seguintes dados: nome, sexo, telefone, data de nascimento, e-mail institucional, senha, RA, curso, ano de ingresso.
 
 O sistema deve possuir um cadastro de entrevistas, com os seguintes dados: nome do projeto de extensão, RA do aluno, e data/hora da entrevista. Assume-se que a duração da entrevista é de 30 minutos e sempre inicia-se em "hora cheia" (14h 00 min etc) ou "hora meia" (14h 30min etc).
