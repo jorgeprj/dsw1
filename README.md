@@ -1,2 +1,6 @@
-# DSW1
-Work of the discipline of Web Devlopment 1
+# AA1: desenvolvimento de um sistema utilizando JSP, Servlet e JDBC
+## Sistema 
+
+## Arquitetura
+
+## Tecnologias
