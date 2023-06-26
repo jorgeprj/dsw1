@@ -1,32 +1,52 @@
-drop database if exists Livraria;
+drop database if exists VagasEmprego;
 
-create database Livraria;
+create database VagasEmprego;
 
-use Livraria;
+USE VagasEmprego;
 
-create table Editora(id bigint not null auto_increment, cnpj varchar(18) not null, nome varchar(256) not null, primary key (id));
+CREATE TABLE Usuario(
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(256) NOT NULL,
+  email VARCHAR(128) NOT NULL,
+  senha VARCHAR(128) NOT NULL,
+  papel VARCHAR(18) NOT NULL,
+  PRIMARY KEY (id)
+);
 
-create table Livro(id bigint not null auto_increment, titulo varchar(256) not null, autor varchar(256) not null, ano integer not null, preco float not null, editora_id bigint not null, primary key (id), foreign key (editora_id) references Editora(id));
+CREATE TABLE Empresa(
+  id BIGINT NOT NULL,
+  cnpj VARCHAR(18),
+  cidade VARCHAR(256),
+  FOREIGN KEY (id) REFERENCES Usuario(id),
+  PRIMARY KEY (id)
+);
 
-insert into Editora(cnpj, nome) values  ('55.789.390/0008-99', 'Companhia das Letras');
+CREATE TABLE Profissional(
+  id BIGINT NOT NULL,
+  cpf VARCHAR(14) NOT NULL,
+  telefone VARCHAR(20) NOT NULL,
+  data_nascimento DATE,
+  FOREIGN KEY (id) REFERENCES Usuario(id),
+  PRIMARY KEY (id)
+);
 
-insert into Editora(cnpj, nome) values ('71.150.470/0001-40', 'Record');
+CREATE TABLE Vaga(
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(256) NOT NULL,
+  descricao TEXT,
+  cnpj VARCHAR(18),
+  dataLimite DATE,
+  FOREIGN KEY (cnpj) REFERENCES Empresa(cnpj),
+  PRIMARY KEY (id)
+);
 
-insert into Editora(cnpj, nome) values ('32.106.536/0001-82', 'Objetiva');
-
-insert into Livro(titulo, autor, ano, preco, editora_id) values ('Ensaio sobre a Cegueira', 'José Saramago', 1995, 54.9, 1);
-
-insert into Livro(titulo, autor, ano, preco, editora_id) values  ('Cem anos de Solidão', 'Gabriel Garcia Márquez', 1977, 59.9, 2);
-
-insert into Livro(titulo, autor, ano, preco, editora_id) values ('Diálogos Impossíveis', 'Luis Fernando Verissimo', 2012, 22.9, 3);
-
-create table Usuario(id bigint not null auto_increment, nome varchar(256) not null, login varchar(20) not null unique, senha varchar(64) not null, papel varchar(10), primary key (id));
-
-insert into Usuario(nome, login, senha, papel) values ('Administrador', 'admin', 'admin', 'ADMIN');
-
-insert into Usuario(nome, login, senha, papel) values ('Usuario', 'user', 'user', 'USER');
-
-create table Compra(id bigint not null auto_increment, data varchar(10) not null, valor float not null, livro_id bigint not null, usuario_id bigint not null, primary key (id), foreign key (livro_id) references Livro(id), foreign key (usuario_id) references Usuario(id));
-
-insert into Compra(data, valor, livro_id, usuario_id) values ('30/08/2020', 10.88, 1, 2);
-
+CREATE TABLE Inscricao(
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  data DATE,
+  cpf VARCHAR(14),
+  curriculo TEXT,
+  vaga_id BIGINT,
+  FOREIGN KEY (cpf) REFERENCES Profissional(cpf),
+  FOREIGN KEY (vaga_id) REFERENCES Vaga(id),
+  PRIMARY KEY (id)
+);
