@@ -13,7 +13,7 @@ O sistema deve possuir um cadastro de profissionais, com os seguintes dados: e-m
 
 O sistema deve possuir um cadastro de empresas, com os seguintes dados: e-mail, senha, CNPJ, nome e cidade.
 
-O sistema deve possuir um cadastro de vagas, com os seguintes dados: nome, descrição, CNPJ da empresa, data inicio/fim para inscrições dos candidatos e candidatos inscritos.
+O sistema deve possuir um cadastro de vagas, com os seguintes dados: nome, descrição, CNPJ da empresa, data fim para inscrições dos candidatos e candidatos inscritos.
 
 O sistema deve possuir um cadastro de inscrições para vagas, com os seguintes dados: CPF do profissional, currículo do profissional, data da inscrição.
 
