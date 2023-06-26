@@ -15,10 +15,6 @@ public class InscricaoDAO extends GenericDAO {
 
     public void insert(Inscricao inscricao) {
 
-        if (inscricao.getData().after(inscricao.getVaga().getDataLimite())){
-            throw new RuntimeException("A data da inscrição deve ser anterior a data limite da vaga que esta sendo aplicada.");
-        }
-
         String sql = "INSERT INTO Inscricao (data, cpf, curriculo, vaga_id) VALUES (?, ?, ?, ?)";
 
         try {

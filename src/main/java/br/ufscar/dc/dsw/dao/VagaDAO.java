@@ -16,7 +16,7 @@ public class VagaDAO extends GenericDAO {
 
     public void insert(Vaga vaga) {
 
-        String sql = "INSERT INTO Vaga (id, nome, descricao, cnpj, data_limite) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Vaga (id, nome, descricao, cnpj, dataLimite) VALUES (?, ?, ?, ?, ?)";
 
         try {
             Connection conn = this.getConnection();
@@ -37,6 +37,7 @@ public class VagaDAO extends GenericDAO {
         }
     }
 
+    //Alterar para get all antes da data
     public List<Vaga> getAll() {
 
         List<Vaga> listaVagas = new ArrayList<>();
@@ -53,7 +54,38 @@ public class VagaDAO extends GenericDAO {
                 String nome = resultSet.getString("nome");
                 String descricao = resultSet.getString("descricao");
                 String cnpj = resultSet.getString("cnpj");
-                Date dataLimite = resultSet.getDate("data_limite");
+                Date dataLimite = resultSet.getDate("dataLimite");
+
+                Vaga vaga = new Vaga(id, nome, descricao, cnpj, dataLimite);
+                listaVagas.add(vaga);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaVagas;
+    }
+
+     public List<Vaga> getAllOpen() {
+
+        List<Vaga> listaVagas = new ArrayList<>();
+
+        String sql = "SELECT * FROM Vaga where SELECT GETDATE() between 2023-06-26 AND dataLimite";
+
+        try {
+            Connection conn = this.getConnection();
+            Statement statement = conn.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                long id = resultSet.getLong("id");
+                String nome = resultSet.getString("nome");
+                String descricao = resultSet.getString("descricao");
+                String cnpj = resultSet.getString("cnpj");
+                Date dataLimite = resultSet.getDate("dataLimite");
 
                 Vaga vaga = new Vaga(id, nome, descricao, cnpj, dataLimite);
                 listaVagas.add(vaga);
@@ -86,7 +118,7 @@ public class VagaDAO extends GenericDAO {
     }
 
     public void update(Vaga vaga) {
-        String sql = "UPDATE Vaga SET nome = ?, descricao = ?, cnpj = ?, data_limite = ? WHERE id = ?";
+        String sql = "UPDATE Vaga SET nome = ?, descricao = ?, cnpj = ?, dataLimite = ? WHERE id = ?";
 
         try {
             Connection conn = this.getConnection();
@@ -106,7 +138,7 @@ public class VagaDAO extends GenericDAO {
         }
     }
 
-    public Vaga getById(Long id) {
+    public Vaga get(Long id) {
         Vaga vaga = null;
 
         String sql = "SELECT * FROM Vaga WHERE id = ?";
@@ -121,7 +153,7 @@ public class VagaDAO extends GenericDAO {
                 String nome = resultSet.getString("nome");
                 String descricao = resultSet.getString("descricao");
                 String cnpj = resultSet.getString("cnpj");
-                Date dataLimite = resultSet.getDate("data_limite");
+                Date dataLimite = resultSet.getDate("dataLimite");
 
                 vaga = new Vaga(id, nome, descricao, cnpj, dataLimite);
             }

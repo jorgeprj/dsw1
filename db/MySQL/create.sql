@@ -15,7 +15,7 @@ CREATE TABLE Usuario(
 
 CREATE TABLE Empresa(
   id BIGINT NOT NULL,
-  cnpj VARCHAR(18),
+  cnpj VARCHAR(18) UNIQUE,
   cidade VARCHAR(256),
   FOREIGN KEY (id) REFERENCES Usuario(id),
   PRIMARY KEY (id)
@@ -23,7 +23,7 @@ CREATE TABLE Empresa(
 
 CREATE TABLE Profissional(
   id BIGINT NOT NULL,
-  cpf VARCHAR(14) NOT NULL,
+  cpf VARCHAR(14) NOT NULL UNIQUE,
   telefone VARCHAR(20) NOT NULL,
   data_nascimento DATE,
   FOREIGN KEY (id) REFERENCES Usuario(id),
@@ -36,7 +36,7 @@ CREATE TABLE Vaga(
   descricao TEXT,
   cnpj VARCHAR(18),
   dataLimite DATE,
-  FOREIGN KEY (cnpj) REFERENCES Empresa(cnpj),
+  FOREIGN KEY (id) REFERENCES Empresa(id),
   PRIMARY KEY (id)
 );
 
@@ -46,7 +46,7 @@ CREATE TABLE Inscricao(
   cpf VARCHAR(14),
   curriculo TEXT,
   vaga_id BIGINT,
-  FOREIGN KEY (cpf) REFERENCES Profissional(cpf),
+  FOREIGN KEY (id) REFERENCES Profissional(id),
   FOREIGN KEY (vaga_id) REFERENCES Vaga(id),
   PRIMARY KEY (id)
 );
