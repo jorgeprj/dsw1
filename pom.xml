@@ -6,10 +6,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.ufscar.dc.dsw</groupId>
-	<artifactId>BancoDeTalentos</artifactId>
+	<artifactId>VagasEmprego</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Banco de Talentos</name>
+	<name>Vagas de Emprego</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
