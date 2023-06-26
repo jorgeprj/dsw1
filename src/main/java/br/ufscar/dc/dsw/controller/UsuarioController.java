@@ -2,7 +2,6 @@ package br.ufscar.dc.dsw.controller;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -108,11 +107,11 @@ public class UsuarioController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		String nome = request.getParameter("nome");
-		String login = request.getParameter("login");
+		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
 		String papel = request.getParameter("papel");
 		
-		Usuario usuario = new Usuario(nome, login, senha, papel);
+		Usuario usuario = new Usuario(nome, email, senha, papel);
 
 		dao.insert(usuario);
 		response.sendRedirect("lista");
@@ -124,11 +123,11 @@ public class UsuarioController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		Long id = Long.parseLong(request.getParameter("id"));
 		String nome = request.getParameter("nome");
-		String login = request.getParameter("login");
+		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
 		String papel = request.getParameter("papel");
 		
-		Usuario usuario = new Usuario(id, nome, login, senha, papel);
+		Usuario usuario = new Usuario(id, nome, email, senha, papel);
 
 		dao.update(usuario);
 		response.sendRedirect("lista");

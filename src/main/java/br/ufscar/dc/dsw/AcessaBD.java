@@ -12,7 +12,7 @@ public class AcessaBD {
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             Connection con = (Connection) DriverManager.getConnection(""
-                    + "jdbc:derby://localhost:1527/Livraria", "root", "root");
+                    + "jdbc:derby://localhost:1527/VagasEmprego", "root", "root");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select * from Livro");
             while (rs.next()) {
