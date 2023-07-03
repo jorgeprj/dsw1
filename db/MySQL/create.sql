@@ -1,52 +1,50 @@
-drop database if exists VagasEmprego;
+DROP DATABASE IF EXISTS VagasEmprego;
 
-create database VagasEmprego;
+CREATE DATABASE VagasEmprego;
 
 USE VagasEmprego;
 
-CREATE TABLE Usuario(
-  id BIGINT NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(256) NOT NULL,
-  email VARCHAR(128) NOT NULL,
-  senha VARCHAR(128) NOT NULL,
-  papel VARCHAR(18) NOT NULL,
-  PRIMARY KEY (id)
+CREATE TABLE Usuario (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(256) NOT NULL,
+    email VARCHAR(128) NOT NULL,
+    senha VARCHAR(64) NOT NULL,
+    papel VARCHAR(20),
+    PRIMARY KEY (id)
 );
 
-CREATE TABLE Empresa(
-  id BIGINT NOT NULL,
-  cnpj VARCHAR(18) UNIQUE,
-  cidade VARCHAR(256),
-  FOREIGN KEY (id) REFERENCES Usuario(id),
-  PRIMARY KEY (id)
+CREATE TABLE Empresa (
+    id BIGINT NOT NULL PRIMARY KEY,
+    cnpj VARCHAR(15) NOT NULL,
+    cidade VARCHAR(50) NOT NULL,
+    FOREIGN KEY (id) REFERENCES Usuario(id)
 );
 
-CREATE TABLE Profissional(
-  id BIGINT NOT NULL,
-  cpf VARCHAR(14) NOT NULL UNIQUE,
-  telefone VARCHAR(20) NOT NULL,
-  data_nascimento DATE,
-  FOREIGN KEY (id) REFERENCES Usuario(id),
-  PRIMARY KEY (id)
+CREATE TABLE Profissional (
+    id BIGINT NOT NULL PRIMARY KEY,
+    cpf VARCHAR(11) NOT NULL,
+    telefone VARCHAR(10),
+    sexo VARCHAR(2),
+    data_nascimento DATE,
+    FOREIGN KEY (id) REFERENCES Usuario(id)
 );
 
-CREATE TABLE Vaga(
-  id BIGINT NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(256) NOT NULL,
-  descricao TEXT,
-  cnpj VARCHAR(18),
-  dataLimite DATE,
-  FOREIGN KEY (id) REFERENCES Empresa(id),
-  PRIMARY KEY (id)
+CREATE TABLE Entrevista (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    cpf_profissional VARCHAR(11) NOT NULL,
+    cnpj_empresa VARCHAR(15) NOT NULL,
+    data_hora DATETIME NOT NULL,
+    PRIMARY KEY (id)
 );
 
-CREATE TABLE Inscricao(
-  id BIGINT NOT NULL AUTO_INCREMENT,
-  data DATE,
-  cpf VARCHAR(14),
-  curriculo TEXT,
-  vaga_id BIGINT,
-  FOREIGN KEY (id) REFERENCES Profissional(id),
-  FOREIGN KEY (vaga_id) REFERENCES Vaga(id),
-  PRIMARY KEY (id)
-);
+INSERT INTO Usuario(nome, email, senha, papel) VALUES
+    ('Jorge Pires', 'jorge@email.com', 'jorge', 'PROFISSIONAL');
+
+INSERT INTO Profissional(id, cpf, telefone, sexo, data_nascimento) VALUES
+    (LAST_INSERT_ID(), '99988877702', '912345678', 'M', '2002-02-11');
+
+INSERT INTO Usuario(nome, email, senha, papel) VALUES
+    ('UFscar', 'ufscar@email.com', 'ufscar', 'EMPRESA');
+
+INSERT INTO Empresa(id, cnpj, cidade) VALUES
+    (LAST_INSERT_ID(), '51168577000148', 'São Carlos');
