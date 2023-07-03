@@ -4,60 +4,63 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.ufscar.dc.dsw.domain.Empresa;
+import br.ufscar.dc.dsw.domain.Usuario;
 
-public class EmpresaDAO extends GenericDAO {
+public class EmpresaDAO extends UsuarioDAO {
 
     public void insert(Empresa empresa) {
-
-        String sql = "INSERT INTO Empresa (id, nome, email, senha, papel, cnpj, cidade) VALUES (?, ?, ?, ?, ?, ?, ?)";
-
         try {
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            
+            long idUsuario = usuarioDAO.insert(empresa, "EMPRESA");
+
+            
+            String empresaSql = "INSERT INTO Empresa (id, cnpj, cidade) VALUES (?, ?, ?)";
             Connection conn = this.getConnection();
-            PreparedStatement statement = conn.prepareStatement(sql);
+            PreparedStatement empresaStatement = conn.prepareStatement(empresaSql);
 
-            statement.setLong(1, empresa.getId());
-            statement.setString(2, empresa.getNome());
-            statement.setString(3, empresa.getEmail());
-            statement.setString(4, empresa.getSenha());
-            statement.setString(5, empresa.getPapel());
-            statement.setString(6, empresa.getCNPJ());
-            statement.setString(7, empresa.getCidade());
+            
+            empresaStatement.setLong(1, idUsuario);
+            empresaStatement.setString(2, empresa.getCnpj());
+            empresaStatement.setString(3, empresa.getCidade());
+            empresaStatement.executeUpdate();
 
-            statement.executeUpdate();
-
-            statement.close();
+            empresaStatement.close();
             conn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public List<Empresa> getAll() {
+    public List<Usuario> getAll() {
+        List<Usuario> listaUsuarios = new ArrayList<>();
 
-        List<Empresa> listaEmpresas = new ArrayList<>();
-
-        String sql = "SELECT * FROM Empresa";
+        String sql = "SELECT" +
+                " Usuario.id, Usuario.nome, Usuario.email, Usuario.senha, Usuario.papel, Empresa.cnpj, Empresa.cidade"
+                +
+                " FROM Usuario" +
+                " JOIN Empresa ON Usuario.id = Empresa.id";
 
         try {
             Connection conn = this.getConnection();
-            Statement statement = conn.createStatement();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
 
-            ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
-                long id = resultSet.getLong("id");
-                String nome = resultSet.getString("nome");
+                Long id = resultSet.getLong("id");
                 String email = resultSet.getString("email");
                 String senha = resultSet.getString("senha");
+                String papel = resultSet.getString("papel");
                 String cnpj = resultSet.getString("cnpj");
+                String nome = resultSet.getString("nome");
                 String cidade = resultSet.getString("cidade");
-
-                Empresa empresa = new Empresa(id, nome, email, senha, cnpj, cidade);
-                listaEmpresas.add(empresa);
+                Empresa empresa = new Empresa(id, nome, email, senha, papel, cnpj, cidade);
+                
+                listaUsuarios.add(empresa); 
             }
 
             resultSet.close();
@@ -66,20 +69,29 @@ public class EmpresaDAO extends GenericDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return listaEmpresas;
+        return listaUsuarios;
     }
 
     public void delete(Empresa empresa) {
-        String sql = "DELETE FROM Empresa WHERE id = ?";
+
+        String empresaSql = "DELETE FROM Empresa WHERE id = ?";
+        String usuarioSql = "DELETE FROM Usuario WHERE id = ?";
 
         try {
             Connection conn = this.getConnection();
-            PreparedStatement statement = conn.prepareStatement(sql);
 
-            statement.setLong(1, empresa.getId());
-            statement.executeUpdate();
+            
+            PreparedStatement empresaStatement = conn.prepareStatement(empresaSql);
+            empresaStatement.setLong(1, empresa.getId());
+            empresaStatement.executeUpdate();
 
-            statement.close();
+            
+            PreparedStatement usuarioStatement = conn.prepareStatement(usuarioSql);
+            usuarioStatement.setLong(1, empresa.getId());
+            usuarioStatement.executeUpdate();
+
+            empresaStatement.close();
+            usuarioStatement.close();
             conn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -87,19 +99,26 @@ public class EmpresaDAO extends GenericDAO {
     }
 
     public void update(Empresa empresa) {
-        String sql = "UPDATE Empresa SET nome = ?, email = ?, senha = ?, papel = ?, cnpj = ?, cidade = ? WHERE id = ?";
+        String sql = "UPDATE Empresa AS m " +
+                "INNER JOIN Usuario AS u ON m.id = u.id " +
+                "SET u.email = ?, " +
+                "u.senha = ?, " +
+                "m.cnpj = ?, " +
+                "u.nome = ?, " +
+                "m.cidade = ? " +
+                "WHERE m.id = ?;";
 
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            statement.setString(1, empresa.getNome());
-            statement.setString(2, empresa.getEmail());
-            statement.setString(3, empresa.getSenha());
-            statement.setString(4, empresa.getPapel());
-            statement.setString(5, empresa.getCNPJ());
-            statement.setString(6, empresa.getCidade());
-            statement.setLong(7, empresa.getId());
+            statement.setString(1, empresa.getEmail());
+            statement.setString(2, empresa.getSenha());
+            statement.setString(3, empresa.getCnpj());
+            statement.setString(4, empresa.getNome());
+            statement.setString(5, empresa.getCidade());
+            statement.setLong(6, empresa.getId());
+
             statement.executeUpdate();
 
             statement.close();
@@ -112,7 +131,12 @@ public class EmpresaDAO extends GenericDAO {
     public Empresa get(Long id) {
         Empresa empresa = null;
 
-        String sql = "SELECT * FROM Empresa WHERE id = ?";
+        String sql = "SELECT " +
+                " Usuario.id, Usuario.nome, Usuario.email, Usuario.senha, Usuario.papel, Empresa.cnpj, Empresa.cidade"
+                +
+                " FROM Usuario" +
+                " JOIN Empresa ON Usuario.id = Empresa.id" +
+                " WHERE Usuario.id = ?";
 
         try {
             Connection conn = this.getConnection();
@@ -120,14 +144,15 @@ public class EmpresaDAO extends GenericDAO {
 
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
+
             if (resultSet.next()) {
-                String nome = resultSet.getString("nome");
                 String email = resultSet.getString("email");
                 String senha = resultSet.getString("senha");
+                String papel = resultSet.getString("papel");
                 String cnpj = resultSet.getString("cnpj");
+                String nome = resultSet.getString("nome");
                 String cidade = resultSet.getString("cidade");
-
-                empresa = new Empresa(id, nome, email, senha, cnpj, cidade);
+                empresa = new Empresa(id, nome, email, senha, papel, cnpj, cidade);
             }
 
             resultSet.close();
@@ -137,5 +162,87 @@ public class EmpresaDAO extends GenericDAO {
             throw new RuntimeException(e);
         }
         return empresa;
+    }
+
+    public Empresa getByCnpj(String cnpj) {
+        Empresa empresa = null;
+
+        String sql = "SELECT " +
+                " Usuario.id, Usuario.nome, Usuario.email, Usuario.senha, Usuario.papel, Empresa.cidade" +
+                " FROM Usuario" +
+                " JOIN Empresa ON Usuario.id = Empresa.id" +
+                " WHERE Empresa.cnpj = ?";
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, cnpj);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+                String papel = resultSet.getString("papel");
+                String nome = resultSet.getString("nome");
+                String cidade = resultSet.getString("cidade");
+                empresa = new Empresa(id, nome, email, senha, papel, cnpj, cidade);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return empresa;
+    }
+
+    public List<Usuario> getByCidade(String cidade) {
+        List<Usuario> listaEmpresasCidade = new ArrayList<>();
+
+        String sql = "SELECT " +
+                " Usuario.id, Usuario.nome, Usuario.email, Usuario.senha, Usuario.papel, Empresa.cnpj, Empresa.cidade"
+                +
+                " FROM Usuario" +
+                " JOIN Empresa ON Usuario.id = Empresa.id" +
+                " WHERE Empresa.cidade = ?";
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, cidade);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+                String papel = resultSet.getString("papel");
+                String cnpj = resultSet.getString("cnpj");
+                String nome = resultSet.getString("nome");
+                Empresa empresa = new Empresa(id, nome, email, senha, papel, cnpj, cidade);
+                listaEmpresasCidade.add(empresa);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return listaEmpresasCidade;
+    }
+
+    public List<String> inicializaCidades() {
+        List<String> listaCidades = new ArrayList<>();
+
+        listaCidades.add("São Carlos");
+        listaCidades.add("São Paulo");
+        listaCidades.add("Ribeirão Preto");
+
+        return listaCidades;
     }
 }

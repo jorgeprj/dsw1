@@ -11,65 +11,64 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.ufscar.dc.dsw.dao.UsuarioDAO;
 import br.ufscar.dc.dsw.domain.Usuario;
-import br.ufscar.dc.dsw.util.Erro;
+import br.ufscar.dc.dsw.utils.Erro;
 
-@WebServlet(name = "Index", urlPatterns = { "/index.jsp", "/logout.jsp" })
+@WebServlet(name = "Index", urlPatterns = {"/index.jsp", "/logout.jsp"})
 public class IndexController extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		Erro erros = new Erro();
-		if (request.getParameter("bOK") != null) {
-			String email = request.getParameter("email");
-			String senha = request.getParameter("senha");
-			if (email == null || email.isEmpty()) {
-				erros.add("Email não informado!");
-			}
-			if (senha == null || senha.isEmpty()) {
-				erros.add("Senha não informada!");
-			}
-			if (!erros.isExisteErros()) {
-				UsuarioDAO dao = new UsuarioDAO();
-				Usuario usuario = dao.getbyEmail(email);
-				if (usuario != null) {
-					if (usuario.getSenha().equalsIgnoreCase(senha)) {
-						request.getSession().setAttribute("usuarioLogado", usuario);
-						String contextPath = request.getContextPath().replace("/", "");
-						request.getSession().setAttribute("contextPath", contextPath);
-						if (usuario.getPapel().equals("ADMIN")) {
-							response.sendRedirect("usuarios/");
-						} else {
-							response.sendRedirect("compras/");
-						}
-						return;
-					} else {
-						erros.add("Senha inválida!");
-					}
-				} else {
-					erros.add("Usuário não encontrado!");
-				}
-			}
-		}
-		request.getSession().invalidate();
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Erro erros = new Erro();
+        if (request.getParameter("bOK") != null) {
+            String email = request.getParameter("email");
+            String senha = request.getParameter("senha");
 
-		request.setAttribute("mensagens", erros);
+            if (email == null || email.isEmpty()) {
+                erros.add("E-mail não informado!");
+            }
+            if (senha == null || senha.isEmpty()) {
+                erros.add("Senha não informada!");
+            }
 
-		String URL = "/email.jsp";
-		RequestDispatcher rd = request.getRequestDispatcher(URL);
-		rd.forward(request, response);
-	}
+            if (!erros.isExisteErros()) {
+                UsuarioDAO dao = new UsuarioDAO();
+                Usuario usuario = dao.getbyEmail(email);
+                if (usuario != null) {
+                    if (usuario.getSenha().equalsIgnoreCase(senha)) {
+                        request.getSession().setAttribute("usuarioLogado", usuario);
 
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		processRequest(request, response);
-	}
+                        if (usuario.getPapel().equals("PROFISSIONAL")) {
+                            response.sendRedirect("profissional/");
+                        } else if (usuario.getPapel().equals("EMPRESA")) {
+                            response.sendRedirect("empresa/");
+                        }
+                        return;
+                    } else {
+                        erros.add("Senha inválida!");
+                    }
+                } else {
+                    erros.add("Usuário não encontrado!");
+                }
+            }
+        }
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		processRequest(request, response);
-	}
+        request.getSession().invalidate();
+
+        request.setAttribute("mensagens", erros);
+
+        String URL = "/login.jsp";
+        RequestDispatcher rd = request.getRequestDispatcher(URL);
+        rd.forward(request, response);
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+    }
 }

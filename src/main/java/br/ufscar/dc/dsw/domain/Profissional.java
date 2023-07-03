@@ -1,37 +1,46 @@
 package br.ufscar.dc.dsw.domain;
 
-import java.sql.Date;
-
 public class Profissional extends Usuario {
 
-    private String CPF;
+    private String cpf;
     private String telefone;
-    private Date dataNascimento;
+    private String sexo;
+    private String dataNascimento;
 
     public Profissional(Long id) {
         super(id);
     }
 
-    public Profissional(String nome, String email, String senha, String cpf, String telefone, Date dataNascimento) {
-        super(nome, email, senha, "PROFISSIONAL");
-        this.CPF = cpf;
+    public Profissional(Long id, String nome, String email, String senha, String papel, String cpf, String telefone, String sexo, String dataNascimento) {
+        super(id, nome, email, senha, papel);
+        this.cpf = cpf;
         this.telefone = telefone;
+        this.sexo = sexo;
         this.dataNascimento = dataNascimento;
     }
 
-    public Profissional(Long id, String nome, String email, String senha, String cpf, String telefone, Date dataNascimento) {
-        super(id, nome, email, senha, "PROFISSIONAL");
-        this.CPF = cpf;
+    public Profissional(String nome, String email, String senha, String papel, String cpf, String telefone, String sexo, String dataNascimento) {
+        super(nome, email, senha, papel);
+        this.cpf = cpf;
         this.telefone = telefone;
+        this.sexo = sexo;
         this.dataNascimento = dataNascimento;
+    }
+
+    public Long getId() {
+        return super.getId();
+    }
+
+    public void setId(Long id) {
+        super.setId(id);
     }
 
     public String getCpf() {
-        return CPF;
+        return cpf;
     }
 
     public void setCpf(String cpf) {
-        this.CPF = cpf;
+        this.cpf = cpf;
     }
 
     public String getTelefone() {
@@ -42,11 +51,19 @@ public class Profissional extends Usuario {
         this.telefone = telefone;
     }
 
-    public Date getDataNascimento() {
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 }

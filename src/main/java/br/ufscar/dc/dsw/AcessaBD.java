@@ -10,16 +10,19 @@ public class AcessaBD {
 
     public static void main(String[] args) {
         try {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            Connection con = (Connection) DriverManager.getConnection(""
-                    + "jdbc:derby://localhost:1527/VagasEmprego", "root", "root");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/Consultorio?useTimezone=true&serverTimezone=UTC", "root" ,"root"
+            );
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from Livro");
+            String query = "SELECT c.id, p.nome AS nome_paciente, m.nome AS nome_medico, c.data_hora FROM Consulta c " +
+                           "INNER JOIN Paciente p ON c.cpf_paciente = p.cpf " +
+                           "INNER JOIN Medico m ON c.crm_medico = m.crm";
+            ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                System.out.print(rs.getString("Titulo"));
-                System.out.print(", " + rs.getString("Autor"));
-                System.out.print(", " + rs.getInt("Ano"));
-                System.out.println(" (R$ " + rs.getFloat("Preco") + ")");
+                System.out.print(rs.getString("nome_paciente"));
+                System.out.print(", " + rs.getString("nome_medico"));
+                System.out.println(", " + rs.getTimestamp("data_hora"));
             }
             stmt.close();
             con.close();

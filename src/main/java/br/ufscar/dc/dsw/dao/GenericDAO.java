@@ -18,6 +18,7 @@ abstract public class GenericDAO {
 
     protected Connection getConnection() throws SQLException {
     	
+    	
     	return DriverManager.getConnection("jdbc:mysql://localhost:3306/VagasEmprego?useTimezone=true&serverTimezone=UTC", "root", "root");
     }
 }
