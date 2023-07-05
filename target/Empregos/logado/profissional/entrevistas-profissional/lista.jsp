@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>Consultório</title>
+    <title>Gerenciamento de Profissionais</title>
 </head>
 <body>
     <div align="center">

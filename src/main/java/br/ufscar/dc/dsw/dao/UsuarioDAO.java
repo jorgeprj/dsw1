@@ -181,7 +181,7 @@ public class UsuarioDAO extends GenericDAO {
 
         try {
             // String sql = "SELECT * FROM Usuario";
-            String sql = "SELECT * FROM Usuario WHERE papel = 'ADMIN'";
+            String sql = "SELECT * FROM Usuario";
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
 

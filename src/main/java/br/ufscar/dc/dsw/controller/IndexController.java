@@ -42,7 +42,9 @@ public class IndexController extends HttpServlet {
                             response.sendRedirect("profissional/");
                         } else if (usuario.getPapel().equals("EMPRESA")) {
                             response.sendRedirect("empresa/");
-                        }
+                        } else if(usuario.getPapel().equals("ADMIN")){
+							response.sendRedirect("admin/");
+						}
                         return;
                     } else {
                         erros.add("Senha inválida!");

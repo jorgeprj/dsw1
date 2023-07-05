@@ -15,16 +15,16 @@ CREATE TABLE Usuario (
 
 CREATE TABLE Empresa (
     id BIGINT NOT NULL PRIMARY KEY,
-    cnpj VARCHAR(15) NOT NULL,
+    cnpj VARCHAR(32) NOT NULL,
     cidade VARCHAR(50) NOT NULL,
     FOREIGN KEY (id) REFERENCES Usuario(id)
 );
 
 CREATE TABLE Profissional (
     id BIGINT NOT NULL PRIMARY KEY,
-    cpf VARCHAR(11) NOT NULL,
-    telefone VARCHAR(10),
-    sexo VARCHAR(2),
+    cpf VARCHAR(20) NOT NULL,
+    telefone VARCHAR(20),
+    sexo VARCHAR(10),
     data_nascimento DATE,
     FOREIGN KEY (id) REFERENCES Usuario(id)
 );
@@ -48,3 +48,6 @@ INSERT INTO Usuario(nome, email, senha, papel) VALUES
 
 INSERT INTO Empresa(id, cnpj, cidade) VALUES
     (LAST_INSERT_ID(), '51168577000148', 'São Carlos');
+
+INSERT INTO Usuario(nome, email, senha, papel) VALUES
+    ('Lucas', 'admin@email.com', 'admin', 'ADMIN')
