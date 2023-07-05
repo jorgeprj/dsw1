@@ -1,7 +1,7 @@
 # AA1: Desenvolvimento de um sistema utilizando JSP, Servlet e JDBC
 
 **(UFSCar)**
-**Grupo 1: Jorge Pires, Heitor Colichio & Lucas Abbiati**
+**Grupo 1: Jorge Pires & Lucas Abbiati**
 
 ## Sistema de Entrevistas de Empregos
 
@@ -22,8 +22,9 @@ O sistema deve atender aos seguintes requisitos:
 - R4: Listagem de todos as empresas por cidade (não requer login)
 - R5: Agendamento de entrevista com uma empresa (requer login do profissional via email + senha). Depois de fazer login, o profissional pode se inscrever em uma entrevista. Para isso, deve escolher uma empresa (escolhendo a partir de uma lista), uma data horário, e deve ser gravado a entrevista na base de dados. Após a efetivação do agendamento da entrevista, o profissional e a empresa devem ser informados (via e-mail)sobre o agendamento realizado.
 - R6: Listagem de todas as inscrições de um profissional (requer login do profissional via e-mail + senha). Depois de fazer login, o profissional pode visualizar todas as suas inscrições para entrevista gravadas.
-- R7: Listagem de todas as entrevistas de uma empresa (requer login da empresa via e-mail + senha). Depois de fazer login, a empresa pode visualizar todas as suas entrevistas cadastradas.
-- R8: O sistema deve ser internacionalizado em pelo menos dois idiomas: português + outro de sua escolha.
+- R7: O sistema não deve permitir o cadastro de entrevistas de uma empresa ou de um mesmo profissional em uma mesma data/horário.
+- R8: Listagem de todas as entrevistas de uma empresa (requer login da empresa via e-mail + senha). Depois de fazer login, a empresa pode visualizar todas as suas entrevistas cadastradas.
+- R9: O sistema deve ser internacionalizado em pelo menos dois idiomas: português + outro de sua escolha.
 
 O sistema deve tratar todos os erros possíveis(cadastro duplicados, problemas técnicos, etc) mostrando uma página de erros amigável ao usuário e registrando o erro no console, em arquivo ou na base de dados.
 
