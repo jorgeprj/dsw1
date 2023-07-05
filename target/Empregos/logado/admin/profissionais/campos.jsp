@@ -9,18 +9,18 @@
         <caption>
             <c:choose>
                 <c:when test="${profissional != null}">
-                    Edição
+                    <h1>Edição</h1>
                 </c:when>
                 <c:otherwise>
-                    Cadastro
+                    <h1>Cadastro</h1>
                 </c:otherwise>
             </c:choose>
         </caption>
-    
+
+<form action="atualizacao" method="post">
         <c:if test="${profissional != null}">
             <input type="hidden" name="id" value="${profissional.id}" />
         </c:if>
-    
         <tr>
             <td><label for="nome">Nome</label></td>
             <td><input type="text" id="nome" name="nome" size="45" required value="${profissional.nome}"/></td>
@@ -50,8 +50,8 @@
             <td><label for="sexo">Sexo</label></td>
             <td>
                 <select id="sexo" name="sexo" required>
-                    <option value="M" ${profissional.sexo == 'F' ? 'selected' : ''}>M</option>
-                    <option value="F" ${profissional.sexo == 'M' ? 'selected' : ''}>F</option>
+                    <option value="M" ${profissional.sexo == 'M' ? 'selected' : ''}>M</option>
+                    <option value="F" ${profissional.sexo == 'F' ? 'selected' : ''}>F</option>
                     <option value="Outro" ${profissional.sexo == 'Outro' ? 'selected' : ''}>Outro</option>
                 </select>
             </td>
@@ -65,5 +65,6 @@
         <tr>
             <td colspan="2" align="center"><input type="submit" value="Salvar"/></td>
         </tr>
+    </form>
     </fmt:bundle>
 </table>

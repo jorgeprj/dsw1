@@ -28,7 +28,6 @@ public class ProfissionalDAO extends UsuarioDAO {
             profissionalStatement.setString(2, profissional.getCpf());
             profissionalStatement.setString(3, profissional.getTelefone());
             profissionalStatement.setString(4, profissional.getSexo());
-            
             profissionalStatement.setString(5, profissional.getDataNascimento());
             profissionalStatement.executeUpdate();
 

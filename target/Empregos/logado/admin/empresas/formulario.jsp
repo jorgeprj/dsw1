@@ -17,7 +17,7 @@
     <div align="center">
         <c:choose>
             <c:when test="${empresa != null}">
-                <form action="edicao" method="post">
+                <form action="atualizacao" method="post">
                     <%@include file="campos.jsp"%>
                 </form>
             </c:when>

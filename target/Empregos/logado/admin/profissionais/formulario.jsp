@@ -20,7 +20,7 @@
     
         <div align="center">
             <c:choose>
-                <c:when test="${profissinal != null}">
+                <c:when test="${profissional != null}">
                     <form action="atualizacao" method="post">
                         <%@include file="campos.jsp"%>
                     </form>
@@ -32,14 +32,6 @@
                 </c:otherwise>
             </c:choose>
         </div>
-    
-        <c:if test="${!empty requestScope.mensagens}">
-            <ul class="erro">
-                <c:forEach items="${requestScope.mensagens}" var="mensagem">
-                    <li>${mensagem}</li>
-                </c:forEach>
-            </ul>
-        </c:if>
     </fmt:bundle>
 </body>
 </html>

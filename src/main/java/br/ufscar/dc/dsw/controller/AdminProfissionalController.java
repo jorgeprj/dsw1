@@ -107,7 +107,7 @@ public class AdminProfissionalController extends HttpServlet {
         String sexo = request.getParameter("sexo");
         String dataNascimento = request.getParameter("dataNascimento");
         
-        Profissional profissional = new Profissional(id, nome, email, senha, papel, cpf, telefone, sexo, dataNascimento);
+        Profissional profissional = new Profissional( id, nome, email, senha, papel, cpf, telefone, sexo, dataNascimento);
         dao.update(profissional);
         response.sendRedirect("lista");
     }

@@ -11,7 +11,7 @@
         <h1>Gerenciamento de Profissionais</h1>
         <h2>
             <a href="${pageContext.request.contextPath}/admin">Menu Principal</a> &nbsp;&nbsp;&nbsp; 
-            <a href="${pageContext.request.contextPath}/profissionais/cadastro">Cadastrar novo profissinal</a> &nbsp;&nbsp;&nbsp;
+            <a href="${pageContext.request.contextPath}/profissionais/cadastro">Cadastrar novo profissional</a> &nbsp;&nbsp;&nbsp;
             <a href="${pageContext.request.contextPath}/logout.jsp">Logout</a>
         </h2>
     </div>
@@ -29,18 +29,18 @@
                 <th>Data de nascimento</th>
                 <th>Ações</th>
 
-                <c:forEach var="profissinal" items="${requestScope.listaProfissionais}">
+                <c:forEach var="profissional" items="${requestScope.listaProfissionais}">
                     <tr>
-                        <td>${profissinal.nome}</td>
-                        <td>${profissinal.email}</td>
-                        <td>${profissinal.senha}</td>
-                        <td>${profissinal.cpf}</td>
-                        <td>${profissinal.telefone}</td>
-                        <td>${profissinal.sexo}</td>
-                        <td>${profissinal.dataNascimento}</td>
+                        <td>${profissional.nome}</td>
+                        <td>${profissional.email}</td>
+                        <td>${profissional.senha}</td>
+                        <td>${profissional.cpf}</td>
+                        <td>${profissional.telefone}</td>
+                        <td>${profissional.sexo}</td>
+                        <td>${profissional.dataNascimento}</td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/profissionais/edicao?id=${profissinal.id}">Edição</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="${pageContext.request.contextPath}/profissionais/remocao?id=${profissinal.id}" onclick="return confirm(getMessage());">
+                            <a href="${pageContext.request.contextPath}/profissionais/edicao?id=${profissional.id}">Edição</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="${pageContext.request.contextPath}/profissionais/remocao?id=${profissional.id}" onclick="return confirm(getMessage());">
                                 Remoção
                             </a>
                         </td>
