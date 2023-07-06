@@ -23,8 +23,8 @@
                 </tr>
                 <c:forEach var="empresa" items="${requestScope.listaEmpresas}">
                     <tr>
-                        <td>${empresa.id}</td>
                         <td>${empresa.nome}</td>
+                        <td>${empresa.email}</td>
                         <td>${empresa.cnpj}</td>
                         <td>${empresa.cidade}</td>
                     </tr>

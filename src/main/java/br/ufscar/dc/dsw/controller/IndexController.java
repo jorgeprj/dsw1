@@ -1,6 +1,7 @@
 package br.ufscar.dc.dsw.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.ufscar.dc.dsw.dao.UsuarioDAO;
+import br.ufscar.dc.dsw.dao.EmpresaDAO;
 import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.utils.Erro;
 
@@ -19,6 +21,12 @@ public class IndexController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        EmpresaDAO empresaDao = new EmpresaDAO();
+        
+        List<String> listaCidades = empresaDao.inicializaCidades();
+        request.setAttribute("listaCidades", listaCidades);
+
         Erro erros = new Erro();
         if (request.getParameter("bOK") != null) {
             String email = request.getParameter("email");

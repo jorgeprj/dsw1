@@ -41,7 +41,19 @@
         </form>
 
         <form method="get" action="noAuth/lista-empresas.jsp">
-            <input type="submit" name="bListarEmpresas" value="Listar empresas">
+            <input type="submit" name="bListarEmpresas" value="Listar todas as empresas">
+        </form>
+
+        <form method="get" action="noAuth/listaCidade">
+            <label for="cidade">Selecionar Cidade</label>
+            <select id="cidade" name="cidade">
+                <c:forEach var="cidade" items="${listaCidades}">
+                    <option value="${cidade}" ${empresa.cidade == cidade ? 'selected' : ''}>
+                        ${cidade}
+                    </option>
+                </c:forEach>
+            </select>
+            <input type="submit" value="Buscar">
         </form>
 
     </body>

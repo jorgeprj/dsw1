@@ -239,9 +239,11 @@ public class EmpresaDAO extends UsuarioDAO {
     public List<String> inicializaCidades() {
         List<String> listaCidades = new ArrayList<>();
 
-        listaCidades.add("São Carlos");
-        listaCidades.add("São Paulo");
-        listaCidades.add("Ribeirão Preto");
+        listaCidades.add("Sao Carlos");
+        listaCidades.add("Sao Paulo");
+        listaCidades.add("Ribeirao Preto");
+        listaCidades.add("Campinas");
+        listaCidades.add("Rio de Janeiro");
 
         return listaCidades;
     }

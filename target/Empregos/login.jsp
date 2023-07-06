@@ -10,6 +10,27 @@
         <title>Vagas de Emprego</title>
         <link href="${pageContext.request.contextPath}/layout.css" rel="stylesheet" type="text/css"/>
     </head>
+    <script>
+        function filterFunction() {
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("cityFilter");
+          filter = input.value
+          table = document.getElementById("Empresas");
+          tr = table.getElementsByTagName("tr");
+        
+          for (i = 0; i < tr.length; i++) { 
+            td = tr[i].getElementsByTagName("td")[3];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+    </script>
 
     <body>
         <h1><fmt:message key="login.page" />:</h1>
@@ -42,6 +63,18 @@
 
         <form method="get" action="noAuth/lista-empresas.jsp">
             <input type="submit" name="bListarEmpresas" value="Listar empresas">
+        </form>
+
+        <form method="get" action="noAuth/listaCidade">
+            <label for="cidade">Selecionar Cidade</label>
+            <select id="cidade" name="cidade">
+                <c:forEach var="cidade" items="${listaCidades}">
+                    <option value="${cidade}" ${empresa.cidade == cidade ? 'selected' : ''}>
+                        ${cidade}
+                    </option>
+                </c:forEach>
+            </select>
+            <input type="submit" value="Buscar">
         </form>
 
     </body>

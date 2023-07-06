@@ -70,9 +70,9 @@ Divisão na implementação da funcionalidade: Jorge (100%)
 
 #### R4
 
-( ) Implementado ( ) Parcialmente implementado (X) Não implementado
+(X) Implementado ( ) Parcialmente implementado (X) Não implementado
 
-Divisão na implementação da funcionalidade:
+Divisão na implementação da funcionalidade: Jorge (100%)
 
 #### R5
 
@@ -103,3 +103,5 @@ Divisão na implementação da funcionalidade: Jorge (100%)
 #### R9
 
 ( ) Implementado ( ) Parcialmente implementado (X) Não implementado
+
+Divisão na implementação da funcionalidade:
