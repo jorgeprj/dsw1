@@ -101,16 +101,16 @@ public class ProfissionalDAO extends UsuarioDAO {
 
     public void update(Profissional profissional) {
 
-        String sql = "UPDATE Profissional AS p " +
-                     "INNER JOIN Usuario AS u ON p.id = u.id " + 
-                     "SET u.email = ?, " +
-                     "u.senha = ?, " +
-                     "p.cpf = ?, " +
-                     "u.nome = ?, " +
-                     "p.telefone = ?, " +
-                     "p.sexo = ?, " +
-                     "p.data_nascimento = ? " +
-                     "WHERE p.id = ?;";
+        String sql = "UPDATE Profissional AS profissional " +
+                     "INNER JOIN Usuario AS usuario ON profissional.id = usuario.id " + 
+                     "SET usuario.email = ?, " +
+                     "usuario.senha = ?, " +
+                     "profissional.cpf = ?, " +
+                     "usuario.nome = ?, " +
+                     "profissional.telefone = ?, " +
+                     "profissional.sexo = ?, " +
+                     "profissional.data_nascimento = ? " +
+                     "WHERE profissional.id = ?;";
 
         try {
             Connection conn = this.getConnection();

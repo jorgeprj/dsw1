@@ -99,14 +99,14 @@ public class EmpresaDAO extends UsuarioDAO {
     }
 
     public void update(Empresa empresa) {
-        String sql = "UPDATE Empresa AS m " +
-                "INNER JOIN Usuario AS u ON m.id = u.id " +
-                "SET u.email = ?, " +
-                "u.senha = ?, " +
-                "m.cnpj = ?, " +
-                "u.nome = ?, " +
-                "m.cidade = ? " +
-                "WHERE m.id = ?;";
+        String sql = "UPDATE Empresa AS empresa " +
+                "INNER JOIN Usuario AS u ON empresa.id = usuario.id " +
+                "SET usuario.email = ?, " +
+                "usuario.senha = ?, " +
+                "empresa.cnpj = ?, " +
+                "usuario.nome = ?, " +
+                "empresa.cidade = ? " +
+                "WHERE empresa.id = ?;";
 
         try {
             Connection conn = this.getConnection();

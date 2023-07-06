@@ -40,6 +40,23 @@
             </table>
         </form>
 
+        <div align="center">
+            <table border="1">
+                <caption>Lista de Empresas</caption>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Cidade</th>
+                </tr>
+                <c:forEach var="empresa" items="${requestScope.listaEmpresas}">
+                        <tr>
+                            <td>${empresa.nome}</td>
+                            <td>${empresa.email}</td>
+                            <td>${empresa.cidade}</td>
+                        </tr>
+                    </c:forEach>
+            </table>
+        </div>
     </body>
 </fmt:bundle>
 </html>

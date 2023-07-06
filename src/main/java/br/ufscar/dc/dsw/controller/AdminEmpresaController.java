@@ -38,6 +38,8 @@ public class AdminEmpresaController extends HttpServlet {
             throws ServletException, IOException {
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
         Erro erros = new Erro();
+        
+        request.setAttribute("listaEmpresas", dao.getAll());
 
         if (usuario == null) {
             response.sendRedirect(request.getContextPath());
