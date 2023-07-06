@@ -34,8 +34,13 @@ senha: admin
 ### Empresa
 
 ```
-login: ufscar@emial.com
+login: ufscar@email.com
 senha: ufscar
+```
+
+```
+login: ufrj@email.com
+senha: ufrj
 ```
 
 
@@ -73,6 +78,8 @@ Divisão na implementação da funcionalidade: Jorge (100%)
 (X) Implementado ( ) Parcialmente implementado (X) Não implementado
 
 Divisão na implementação da funcionalidade: Jorge (100%)
+
+**Como apenas 2 empresas foram adicionadas só é possível listar por:** ***Sao Carlos*** **e** ***Rio de Janeiro***
 
 #### R5
 
