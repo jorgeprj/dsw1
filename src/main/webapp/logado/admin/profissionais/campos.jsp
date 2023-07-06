@@ -22,32 +22,32 @@
             <input type="hidden" name="id" value="${profissional.id}" />
         </c:if>
         <tr>
-            <td><label for="nome">Nome</label></td>
+            <td><label for="nome"><fmt:message key="user.nome" /></label></td>
             <td><input type="text" id="nome" name="nome" size="45" required value="${profissional.nome}"/></td>
         </tr>
     
         <tr>
-            <td><label for="email">Email</label></td>
+            <td><label for="email"><fmt:message key="user.email" /></label></td>
             <td><input type="text" id="email" name="email" size="45" required value="${profissional.email}"></td>
         </tr>
     
         <tr>
-            <td><label for="senha">Senha</label></td>
+            <td><label for="senha"><fmt:message key="user.password" /></label></td>
             <td><input type="text" id="senha" name="senha" size="45" required value="${profissional.senha}"/></td>
         </tr>
     
         <tr>
-            <td><label for="cpf">CPF</label></td>
+            <td><label for="cpf"><fmt:message key="profssional.cpf" /></label></td>
             <td><input type="text" id="cpf" name="cpf" size="45" required value="${profissional.cpf}"/></td>
         </tr>
     
         <tr>
-            <td><label for="telefone">Telefone</label></td>
+            <td><label for="telefone"><fmt:message key="profissional.telefone" /></label></td>
             <td><input type="text" id="telefone" name="telefone" size="45" required value="${profissional.telefone}"/></td>
         </tr>
     
         <tr>
-            <td><label for="sexo">Sexo</label></td>
+            <td><label for="sexo"><fmt:message key="profissional.sexo" /></label></td>
             <td>
                 <select id="sexo" name="sexo" required>
                     <option value="M" ${profissional.sexo == 'M' ? 'selected' : ''}>M</option>
@@ -58,7 +58,7 @@
         </tr>
     
         <tr>
-            <td><label for="dataNascimento">Data De Nascimento</label></td>
+            <td><label for="dataNascimento"><fmt:message key="profissional.data" /></label></td>
             <td><input type="date" id="dataNascimento" name="dataNascimento" size="45" required value="${profissional.dataNascimento}"/></td>
         </tr>
     

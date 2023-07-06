@@ -4,13 +4,13 @@
 
 <html>
 <head>
-    <title>Profissionais</title>
+    <title><fmt:message key="user.profissional" /></title>
 </head>
 <body>
     <div align="center">
-        <h1>Gerenciamento de Profissionais</h1>
+        <h1><fmt:message key="gerenciamento.profissionais" /></h1>
         <h2>
-            <a href="${pageContext.request.contextPath}/admin">Menu Principal</a> &nbsp;&nbsp;&nbsp; 
+            <a href="${pageContext.request.contextPath}/admin"><fmt:message key="item.menu" /></a> &nbsp;&nbsp;&nbsp; 
             <a href="${pageContext.request.contextPath}/profissionais/cadastro">Cadastrar novo profissional</a> &nbsp;&nbsp;&nbsp;
             <a href="${pageContext.request.contextPath}/logout.jsp">Logout</a>
         </h2>
@@ -18,16 +18,16 @@
 
     <div align="center">
         <table border="1">
-            <caption>Lista de Profissionais</caption>
+            <caption><fmt:message key="lista.profissional" /></caption>
             <tr>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Senha</th>
-                <th>CPF</th>
-                <th>Telefone</th>
-                <th>Sexo</th>
-                <th>Data de nascimento</th>
-                <th>Ações</th>
+                <th><fmt:message key="user.nome" /></th>
+                <th><fmt:message key="user.email" /></th>
+                <th><fmt:message key="user.password" /></th>
+                <th><fmt:message key="profissional.cpf" /></th>
+                <th><fmt:message key="profissional.telefone" /></th>
+                <th><fmt:message key="profissional.sexo" /></th>
+                <th><fmt:message key="profissional.data" /></th>
+                <th><fmt:message key="admin.acoes" /></th>
 
                 <c:forEach var="profissional" items="${requestScope.listaProfissionais}">
                     <tr>
@@ -39,9 +39,9 @@
                         <td>${profissional.sexo}</td>
                         <td>${profissional.dataNascimento}</td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/profissionais/edicao?id=${profissional.id}">Edição</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="${pageContext.request.contextPath}/profissionais/edicao?id=${profissional.id}"><fmt:message key="user.edicao" /></a> &nbsp;&nbsp;&nbsp;&nbsp;
                             <a href="${pageContext.request.contextPath}/profissionais/remocao?id=${profissional.id}" onclick="return confirm(getMessage());">
-                                Remoção
+                                <fmt:message key="user.remove" />
                             </a>
                         </td>
                     </tr>

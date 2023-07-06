@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Empresa</title>
+    <title><fmt:message key="user.empresa" /></title>
 </head>
 <body>
     <h1>Olá, ${sessionScope.usuarioLogado.nome}</h1>
@@ -14,7 +14,7 @@
     </li>
 
     <li>
-        <a href="${pageContext.request.contextPath}/logout.jsp">Sair</a>
+        <a href="${pageContext.request.contextPath}/logout.jsp"><fmt:message key="sair" /></a>
     </li>
 </body>
 </html>

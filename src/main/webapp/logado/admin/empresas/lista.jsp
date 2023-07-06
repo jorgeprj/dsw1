@@ -20,12 +20,12 @@
         <table border="1">
             <caption>Lista de Empresas</caption>
             <tr>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Senha</th>
-                <th>CNPJ</th>
-                <th>Cidade</th>
-                <th>Ações</th>
+                <th><fmt:message key="user.nome" /></th>
+                <th><fmt:message key="user.email" /></th>
+                <th><fmt:message key="user.password" /></th>
+                <th><fmt:message key="empresa.cnpj" /></th>
+                <th><fmt:message key="empresa.cidade" /></th>
+                <th><fmt:message key="admin.acoes" /></th>
             </tr>
             <c:forEach var="empresa" items="${requestScope.listaEmpresas}">
                     <tr>
@@ -35,9 +35,9 @@
                         <td>${empresa.cnpj}</td>
                         <td>${empresa.cidade}</td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/empresas/edicao?id=${empresa.id}">Edição</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="${pageContext.request.contextPath}/empresas/edicao?id=${empresa.id}"><fmt:message key="user.edicao" /></a> &nbsp;&nbsp;&nbsp;&nbsp;
                             <a href="${pageContext.request.contextPath}/empresas/remocao?id=${empresa.id}" onclick="return confirm(getMessage());">
-                                Remoção
+                                <fmt:message key="user.remove" />
                             </a>
                         </td>
                     </tr>

@@ -7,7 +7,7 @@
 <fmt:bundle basename="message">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Vagas de Emprego</title>
+        <title><fmt:message key="vagas.emprego" /></title>
         <link href="${pageContext.request.contextPath}/layout.css" rel="stylesheet" type="text/css"/>
     </head>
 
@@ -41,21 +41,27 @@
         </form>
 
         <div align="center">
-            <table border="1">
-                <caption>Lista de Empresas</caption>
+            <h1><fmt:message key="lista.empresa" /></h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th><fmt:message key="user.nome" /></th>
+                <th><fmt:message key="user.email" /></th>
+                <th><fmt:message key="empresa.cidade" /></th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="empresa" items="${listaEmpresas}">
                 <tr>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Cidade</th>
+                    <td>${empresa.id}</td>
+                    <td>${empresa.nome}</td>
+                    <td>${empresa.email}</td>
+                    <td>${empresa.cidade}</td>
                 </tr>
-                <c:forEach var="empresa" items="${requestScope.listaEmpresas}">
-                        <tr>
-                            <td>${empresa.nome}</td>
-                            <td>${empresa.email}</td>
-                            <td>${empresa.cidade}</td>
-                        </tr>
-                    </c:forEach>
-            </table>
+            </c:forEach>
+        </tbody>
+    </table>
         </div>
     </body>
 </fmt:bundle>
