@@ -109,6 +109,6 @@ Divisão na implementação da funcionalidade: Jorge (100%)
 
 #### R9
 
-( ) Implementado ( ) Parcialmente implementado (X) Não implementado
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
 
-Divisão na implementação da funcionalidade:
+Divisão na implementação da funcionalidade: Lucas (100%)
