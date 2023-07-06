@@ -2,15 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<fmt:bundle basename="message">
 <head>
-    <title>Profissional</title>
+    <title><fmt:message key="user.professional" /></title>
 </head>
 <body>
     <div align="center">
-        <h1>Gerenciamento de Entrevistas</h1>
+        <h1><fmt:message key="gerenciamento.entrevista" /></h1>
         <h2>
-            <a href="lista">Lista de Entrevistas</a>
+            <a href="lista"><fmt:message key="lista.entrevista" /></a>
         </h2>
     </div>
 
@@ -30,4 +31,4 @@
     </div>
 
 </body>
-</html>
+</fmt:bundle>

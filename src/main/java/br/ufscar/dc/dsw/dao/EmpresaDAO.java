@@ -100,7 +100,7 @@ public class EmpresaDAO extends UsuarioDAO {
 
     public void update(Empresa empresa) {
         String sql = "UPDATE Empresa AS empresa " +
-                "INNER JOIN Usuario AS u ON empresa.id = usuario.id " +
+                "INNER JOIN Usuario AS usuario ON empresa.id = usuario.id " +
                 "SET usuario.email = ?, " +
                 "usuario.senha = ?, " +
                 "empresa.cnpj = ?, " +

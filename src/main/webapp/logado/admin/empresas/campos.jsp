@@ -46,7 +46,7 @@
         
         
         <tr>
-            <td colspan="2" align="center"><input type="submit" value="Salvar" /></td>
+            <td colspan="2" align="center"><input type="submit" value="<fmt:message key="salvar" />"/></td>
         </tr>
     </table>
 </fmt:bundle>

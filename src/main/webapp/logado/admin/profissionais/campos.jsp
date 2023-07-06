@@ -3,16 +3,16 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+<fmt:bundle basename="message">
 <table border="1">
     <fmt:bundle basename="message">
         <caption>
             <c:choose>
                 <c:when test="${profissional != null}">
-                    <h1>Edição</h1>
+                    <h1><fmt:message key="user.edicao" /></h1>
                 </c:when>
                 <c:otherwise>
-                    <h1>Cadastro</h1>
+                    <h1><fmt:message key="user.cadastro" /></h1>
                 </c:otherwise>
             </c:choose>
         </caption>
@@ -37,7 +37,7 @@
         </tr>
     
         <tr>
-            <td><label for="cpf"><fmt:message key="profssional.cpf" /></label></td>
+            <td><label for="cpf"><fmt:message key="profissional.cpf" /></label></td>
             <td><input type="text" id="cpf" name="cpf" size="45" required value="${profissional.cpf}"/></td>
         </tr>
     
@@ -52,7 +52,7 @@
                 <select id="sexo" name="sexo" required>
                     <option value="M" ${profissional.sexo == 'M' ? 'selected' : ''}>M</option>
                     <option value="F" ${profissional.sexo == 'F' ? 'selected' : ''}>F</option>
-                    <option value="Outro" ${profissional.sexo == 'Outro' ? 'selected' : ''}>Outro</option>
+                    <option value="Outro" ${profissional.sexo == 'Outro' ? 'selected' : ''}><fmt:message key="outro" /></option>
                 </select>
             </td>
         </tr>
@@ -63,8 +63,9 @@
         </tr>
     
         <tr>
-            <td colspan="2" align="center"><input type="submit" value="Salvar"/></td>
+            <td colspan="2" align="center"><input type="submit" value="<fmt:message key="salvar" />"/></td>
         </tr>
     </form>
     </fmt:bundle>
 </table>
+</fmt:bundle>

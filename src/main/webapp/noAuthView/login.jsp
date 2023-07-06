@@ -63,6 +63,10 @@
         </tbody>
     </table>
         </div>
+        <form method="get" action="noAuth/lista-empresas.jsp">
+            <input type="submit" name="<fmt:message key="listar">" value="">
+        </form>
+
     </body>
 </fmt:bundle>
 </html>

@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.ufscar.dc.dsw.dao.EmpresaDAO;
 import br.ufscar.dc.dsw.domain.Usuario;
-import br.ufscar.dc.dsw.domain.Empresa;
 import br.ufscar.dc.dsw.utils.Erro;
 
 @WebServlet(urlPatterns = "/empresa/*")

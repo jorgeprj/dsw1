@@ -3,7 +3,7 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<html>
+<fmt:bundle basename="message">
 <head>
     <fmt:bundle basename="message">
         <title><fmt:message key="user.profissional" /></title>
@@ -12,7 +12,7 @@
 <body>
     <fmt:bundle basename="message">
         <div align="center">
-            <h1><fmt:message key="gerenciamento.profissionais" /></h1>
+            <h1><fmt:message key="gerenciamento.profissional" /></h1>
             <h2>
                 <a href="lista"><fmt:message key="user.profissional" /></a>
             </h2>
@@ -34,4 +34,4 @@
         </div>
     </fmt:bundle>
 </body>
-</html>
+</fmt:bundle>

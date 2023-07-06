@@ -2,11 +2,12 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-
+<fmt:bundle basename="message">
 <table border="1">
     <caption>
-        Edição
+        <fmt:message key="user.edicao" />
     </caption>
 
     <c:if test="${entrevista != null}">
@@ -14,7 +15,7 @@
     </c:if>
 
     <tr>
-        <td><label for="cnpj">Empresas</label></td>
+        <td><label for="cnpj"><fmt:message key="user.empresa" /></label></td>
         <td>
             <select id="cnpj" name="cnpj">
                 <c:forEach items="${listaEmpresas}" var="empresa">
@@ -25,14 +26,14 @@
     </tr>
 
     <tr>
-        <td><label for="data">Data</label></td>
+        <td><label for="data"><fmt:message key="profissional.data" /></label></td>
         <td>
             <input type="date" id="data" name="data" required value="${fn:substring(entrevista.dataHora, 0, 10)}" />
         </td>
     </tr>
 
     <tr>
-        <td><label for="hora">Hora:</label></td>
+        <td><label for="hora"><fmt:message key="user.time" /></label></td>
         <td>
             <select id="hora" name="hora">
                 <script>
@@ -68,9 +69,10 @@
     <tr>
         <td colspan="2" align="center">
             <c:if test="${requestScope.disponibilidade == false}">
-                <h3 style="color:red;">Data/horário indisponível. Escolha outra data ou horário para se entrevistar.</h3>
+                <h3 style="color:red;"><fmt:message key="profissional.erro" /></h3>
             </c:if>
             <input type="submit" value="Agendar" />
         </td>
     </tr>
 </table>
+</fmt:bundle>

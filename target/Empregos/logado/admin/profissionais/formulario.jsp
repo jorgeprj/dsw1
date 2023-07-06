@@ -3,18 +3,18 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<html>
+<fmt:bundle basename="message">
 <head>
     <fmt:bundle basename="message">
-        <title>Gerenciar Profissionais</title>
+        <title><fmt:message key="user.profissional" /></title>
     </fmt:bundle>
 </head>
 <body>
     <fmt:bundle basename="message">
         <div align="center">
-            <h1>Gerenciar Profissionais</h1>
+            <h1><fmt:message key="gerenciamento.profissional" /></h1>
             <h2>
-                <a href="lista">Profissionais</a>
+                <a href="lista"><fmt:message key="user.profissional" /></a>
             </h2>
         </div>
     
@@ -34,4 +34,4 @@
         </div>
     </fmt:bundle>
 </body>
-</html>
+</fmt:bundle>
