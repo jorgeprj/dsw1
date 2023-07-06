@@ -21,10 +21,10 @@
                     <th><fmt:message key="empresa.cnpj" /></th>
                     <th><fmt:message key="empresa.cidade" /></th>
                 </tr>
-                <c:forEach var="empresa" items="${requestScope.listaEmpresasCidades}">
+                <c:forEach var="empresa" items="${requestScope.listaEmpresasCidade}">
                     <tr>
-                        <td>${empresa.id}</td>
                         <td>${empresa.nome}</td>
+                        <td>${empresa.email}</td>
                         <td>${empresa.cnpj}</td>
                         <td>${empresa.cidade}</td>
                     </tr>
@@ -32,7 +32,7 @@
             </table>
             
             <div>
-                <a href="${pageContext.request.contextPath}/logout.jsp"><fmt:message key="Voltar" /></a>
+                <a href="${pageContext.request.contextPath}/logout.jsp"><fmt:message key="voltar"></a>
             </div>    
         </div>
 </body>

@@ -47,7 +47,13 @@ INSERT INTO Usuario(nome, email, senha, papel) VALUES
     ('UFscar', 'ufscar@email.com', 'ufscar', 'EMPRESA');
 
 INSERT INTO Empresa(id, cnpj, cidade) VALUES
-    (LAST_INSERT_ID(), '51168577000148', 'São Carlos');
+    (LAST_INSERT_ID(), '51168577000148', 'Sao Carlos');
 
 INSERT INTO Usuario(nome, email, senha, papel) VALUES
-    ('Lucas', 'admin@email.com', 'admin', 'ADMIN')
+    ('ADMIN', 'admin@email.com', 'admin', 'ADMIN');
+
+INSERT INTO Usuario(nome, email, senha, papel) VALUES
+    ('UFRJ', 'ufrj@email.com', 'ufrj', 'EMPRESA');
+
+INSERT INTO Empresa(id, cnpj, cidade) VALUES
+    (LAST_INSERT_ID(), '51067477000149', 'Rio de Janeiro');
