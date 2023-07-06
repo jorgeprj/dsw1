@@ -34,7 +34,7 @@ public class NoAuthController extends HttpServlet {
         }
 
         switch (action) {
-            case "/listaEmpresasCidade":
+            case "/listaCidade":
                 listaEmpresasCidade(request, response);
                 break;
             default:
@@ -43,27 +43,23 @@ public class NoAuthController extends HttpServlet {
         }
     }
 
-    private void listaEmpresas(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    private void listaEmpresas(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Usuario> listaEmpresas = dao.getAll();
+
         request.setAttribute("listaEmpresas", listaEmpresas);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/noAuthView/consulta-empresas.jsp");
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/noLogado/lista-empresas.jsp");
         dispatcher.forward(request, response);
     }
 
-    private void listaEmpresasCidade(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
+    private void listaEmpresasCidade(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String cidade = request.getParameter("cidade");
-
         
         List<Usuario> listaEmpresasCidade = dao.getByCidade(cidade);
-
         
         request.setAttribute("listaEmpresasCidade", listaEmpresasCidade);
-
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/noAuthView/listaEmpresasCidade.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/noLogado/listaEmpresasByCidade.jsp");
         dispatcher.forward(request, response);
     }
 }
