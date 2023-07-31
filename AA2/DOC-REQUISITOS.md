@@ -1,4 +1,4 @@
-# AA2: Desenvolvimento de um sistema utilizando JSP, Servlet e JDBC
+# AA2: desenvolvimento de um sistema utilizando Spring MVC, Spring Data JPA, Spring Security e Thymeleaf
 
 **(UFSCar)**
 **Grupo 1: Jorge Pires & Lucas Abbiati**
