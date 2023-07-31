@@ -1,4 +1,4 @@
-# AA2: desenvolvimento de um sistema utilizando JSP, Servlet e JDBC
+# AA2: desenvolvimento de um sistema utilizando Spring MVC, Spring Data JPA, Spring Security e Thymeleaf
 
 ## Sistema 
 Sistema para oferta de vagas de empregos 
