@@ -1,6 +1,4 @@
-AA2: desenvolvimento de um sistema utilizando Spring MVC, Spring Data JPA, Spring Security e Thymeleaf
-Sistema
-Sistema para oferta de vagas de empregos
+# AA2: desenvolvimento de um sistema utilizando Spring MVC, Spring Data JPA, Spring Security e Thymeleaf
 
 Roteiro de execução
 Rodar tomcat na sua pasta /opt/tomcat/bin e executar ./catalina run

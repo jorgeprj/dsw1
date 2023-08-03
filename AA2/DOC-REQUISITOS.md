@@ -1,5 +1,9 @@
-AA2: desenvolvimento de um sistema utilizando Spring MVC, Spring Data JPA, Spring Security e Thymeleaf
-(UFSCar) Grupo 1: Jorge Pires & Lucas Abbiati
+# AA2: desenvolvimento de um sistema utilizando Spring MVC, Spring Data JPA, Spring Security e Thymeleaf
+
+**(UFSCar)**
+**Grupo 1: Jorge Pires & Lucas Abbiati**
+
+## Sistema de Entrevistas de Empregos
 
 Sistema de Entrevistas de Empregos
 Um profissional se inscreve para uma entrevista de emprego em uma empresa.
