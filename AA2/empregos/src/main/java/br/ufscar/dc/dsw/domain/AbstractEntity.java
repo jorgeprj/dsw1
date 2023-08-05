@@ -1,7 +1,6 @@
-package br.ufscar.dc.dsw.empregos.domain;
+package br.ufscar.dc.dsw.domain;
 
 import java.io.Serializable;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,14 +10,12 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class AbstractEntity<ID extends Serializable> implements Serializable {
 	
-	@Id 
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private ID id;
 
 	public ID getId() {
 		return id;
 	}
-
 	public void setId(ID id) {
 		this.id = id;
 	}
@@ -33,12 +30,9 @@ public abstract class AbstractEntity<ID extends Serializable> implements Seriali
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
 		AbstractEntity<?> other = (AbstractEntity<?>) obj;
 		if (id == null) {
 			if (other.id != null)
@@ -51,5 +45,5 @@ public abstract class AbstractEntity<ID extends Serializable> implements Seriali
 	@Override
 	public String toString() {
 		return "id=" + id;
-	}
+	}	
 }
