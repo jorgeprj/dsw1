@@ -1,0 +1,42 @@
+/* Estilos para a tabela */
+table {
+  margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Estilos para as células do cabeçalho */
+th {
+  background-color: #f2f2f2;
+}
+
+/* Estilos para as células de dados (linhas ímpares) */
+tr:nth-child(odd) td {
+  background-color: #f9f9f9;
+}
+
+/* Estilos para os botões na última coluna da tabela */
+td > .btn {
+  margin-right: 5px;
+}
+
+/* Estilos para os botões de ação na última coluna da tabela */
+td > .btn span {
+  font-size: 16px;
+}
+
+h2{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-primary {
+  padding: 10px;
+  margin: 20px;
+}
