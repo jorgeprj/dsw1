@@ -1,4 +1,4 @@
-package br.ufscar.dc.dsw.empregos.validation;
+package br.ufscar.dc.dsw.validation;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -10,7 +10,7 @@ import br.ufscar.dc.dsw.dao.IEmpresaDAO;
 import br.ufscar.dc.dsw.domain.Empresa;
 
 @Component
-public class UniqueCNPJValidator implements ConstraintValidator<UniqueCNPJ, String> {
+public class UniqueCnpjValidator implements ConstraintValidator<UniqueCnpj, String> {
 
 	@Autowired
 	private IEmpresaDAO dao;
@@ -23,6 +23,5 @@ public class UniqueCNPJValidator implements ConstraintValidator<UniqueCNPJ, Stri
 		} else {
 			return true;
 		}
-
 	}
 }

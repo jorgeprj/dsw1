@@ -1,4 +1,4 @@
-package br.ufscar.dc.dsw.empregos.validation;
+package br.ufscar.dc.dsw.validation;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -10,19 +10,18 @@ import br.ufscar.dc.dsw.dao.IProfissionalDAO;
 import br.ufscar.dc.dsw.domain.Profissional;
 
 @Component
-public class UniqueCPFValidator implements ConstraintValidator<UniqueCPF, String> {
+public class UniqueCpfValidator implements ConstraintValidator<UniqueCpf, String> {
 
 	@Autowired
 	private IProfissionalDAO dao;
 
 	@Override
-	public boolean isValid(String CPF, ConstraintValidatorContext context) {
+	public boolean isValid(String cpf, ConstraintValidatorContext context) {
 		if (dao != null) {
-			Profissional profissional = dao.findByCPF(CPF);
+			Profissional profissional = dao.findByCpf(cpf);
 			return profissional == null;
 		} else {
 			return true;
 		}
-
 	}
 }
