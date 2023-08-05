@@ -1,4 +1,4 @@
-package br.ufscar.dc.dsw.empregos.config;
+package br.ufscar.dc.dsw.config;
 
 import org.springframework.context.annotation.*;
 import org.springframework.security.authentication.dao.*;
@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.ufscar.dc.dsw.security.UsuarioDetailsServiceImpl;
+
+
 
 @Configuration
 @EnableWebSecurity
@@ -40,10 +42,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-				http.authorizeRequests()
-				.antMatchers("/error", "/login/**", "/js/**", "/css/**", "/image/**", "/webjars/**").permitAll()
-				.antMatchers("/compras/**").hasRole("USER")
-				.antMatchers("/editoras/**", "/livros/**", "/usuarios/**").hasRole("ADMIN")
+		http.authorizeRequests()
+				.antMatchers("/", "/index", "/error").permitAll()
+				.antMatchers("/login/**", "/js/**", "/css/**", "/image/**", "/webjars/**").permitAll()
+				.antMatchers("/entrevistas/listar", "/empresas/").permitAll()
+				.antMatchers("/admin/**").hasRole("ADMIN")
+				.antMatchers("/profissionais/**").hasRole("ADMIN")
+				.antMatchers("/empresas/**").hasRole("ADMIN")
+                .antMatchers("/entrevistas/cadastrar").hasRole("PROFISSIONAL")
+                .antMatchers("/entrevistas/listar").authenticated()
 				.anyRequest().authenticated()
 			.and()
 				.formLogin()
