@@ -68,14 +68,14 @@ Divisão na implementação da funcionalidade: Lucas (90%), Jorge (10%)
 
 #### R3
 
-(X) Implementado ( ) Parcialmente implementado (X) Não implementado
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
 
 Divisão na implementação da funcionalidade: Jorge (100%)
 
 
 #### R4
 
-(X) Implementado ( ) Parcialmente implementado (X) Não implementado
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
 
 Divisão na implementação da funcionalidade: Jorge (100%)
 

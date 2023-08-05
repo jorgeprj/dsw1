@@ -7,7 +7,7 @@
 
 Um profissional se inscreve para uma entrevista de emprego em uma empresa.
 
-### Atividade AA-1: Sistema para entrevistas de empregos.
+### Atividade AA1: Sistema para entrevistas de empregos.
 
 O sistema deve possuir um cadastro de *profissionais*, com os seguintes dados: e-mail, senha, CPF, nome, telefone, sexo e data de nascimento.
 
