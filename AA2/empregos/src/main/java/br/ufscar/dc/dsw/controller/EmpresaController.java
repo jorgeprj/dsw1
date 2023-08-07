@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,9 @@ public class EmpresaController {
 	
 	@Autowired
 	private IEmpresaService service;
+
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 
 	@GetMapping("/cadastrar")
 	public String cadastrar(Empresa empresa) {
@@ -53,7 +57,7 @@ public class EmpresaController {
 
 		System.out.println("password = " + empresa.getPassword());
 		
-		empresa.setPassword(empresa.getPassword());
+		empresa.setPassword(encoder.encode(empresa.getPassword()));
 		service.salvar(empresa);
 		attr.addFlashAttribute("sucess", "Empresa inserido com sucesso.");
 		return "redirect:/empresas/listar";

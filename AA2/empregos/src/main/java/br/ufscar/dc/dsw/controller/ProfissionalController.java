@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -22,6 +23,8 @@ public class ProfissionalController {
 	@Autowired
 	private IProfissionalService service;
 
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Profissional profissional) {
@@ -41,7 +44,7 @@ public class ProfissionalController {
 			return "profissional/cadastro";
 		}		
 		
-		profissional.setPassword(profissional.getPassword());
+		profissional.setPassword(encoder.encode(profissional.getPassword()));
 		service.salvar(profissional);
 		attr.addFlashAttribute("sucess", "Profissional inserido com sucesso.");
 		return "redirect:/profissionais/listar";

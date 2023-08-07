@@ -85,7 +85,7 @@
                         <input th:unless="${empresa.id != null}" type="text" class="form-control" id="cnpj" th:field="*{cnpj}"
                             autofocus="autofocus" placeholder="__. ___. ___/____-__"
                             th:classappend="${#fields.hasErrors('cnpj')} ? is-invalid" 
-                            data-mask="000.000.000-00" data-mask-reverse="true"  title="#{empresa.cnpj.invalido}"  required/>
+                            data-mask="00.000.000/0000-00" data-mask-reverse="true"  title="#{empresa.cnpj.invalido}"  required/>
                         <div class="invalid-feedback">
                             <span th:errors="*{cnpj}"></span>
 							<span th:if="${#fields.hasErrors('cnpj')}"></span>
