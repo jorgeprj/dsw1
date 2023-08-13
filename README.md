@@ -1,5 +1,5 @@
 # Web Development 1 Repository (UFSCar)
-This repository contains the assignments developed by students Jorge (jorgeprj) and Lucas (LucasAbbiati) for the Web Development 1 course at the Federal University of São Carlos (UFSCar).
+This repository contains the assignments developed by students Jorge [(jorgeprj)](https://github.com/jorgeprj) and Lucas [(LucasAbbiati)](https://github.com/LucasAbbiati) for the Web Development 1 course at the Federal University of São Carlos (UFSCar).
 
 ## Course Assignments
 The course was divided into three practical assignments (AA1, AA2, and AA3), each focusing on different web development technologies and concepts.
