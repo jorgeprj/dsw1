@@ -18,7 +18,7 @@
 					th:href="@{/entrevistas/listar}" th:text="#{entrevista.listar.label}"></a>
 					
 		<sec:authorize access="hasRole('ROLE_PROFISSIONAL')">
-			<a class="btn btn-primary mb-2" type="button" th:href="@{/entrevistas/cadastrar}" th:text="#{entrevista.cadastrar.label}"></a>
+			<a sec:authorize="hasRole('ROLE_PROFISSIONAL')" class="btn btn-primary mb-2" type="button" th:href="@{/entrevistas/cadastrar}" th:text="#{entrevista.cadastrar.label}"></a>
 		</sec:authorize>
 					
 		<a class="btn btn-primary" type="button"

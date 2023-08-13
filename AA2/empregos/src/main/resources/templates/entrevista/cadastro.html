@@ -11,10 +11,6 @@
 
     <section class="layout-content" layout:fragment="corpo">
 		
-		<h3>
-			<span th:text="#{home.hello}"></span>
-			<span th:inline="text">[[${#httpServletRequest.remoteUser}]]!</span>
-		</h3>
 		
 		<nav class="navbar navbar-inverse navbar-static-top">
 			<div class="container">
@@ -54,7 +50,7 @@
 					<div class="form-group col-md-6">
 					    <label for="empresa">Empresa:</label>
 					    <select id="empresa" name="empresa" th:field="*{empresa}">
-					        <option th:each="empresa : ${empresa}" 
+					        <option th:each="empresa : ${Empresa}" 
 					                th:value="${empresa.id}" 
 					                th:text="${empresa.nome}"></option>
 					    </select>

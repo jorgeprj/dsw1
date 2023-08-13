@@ -35,31 +35,31 @@ public class EmpregosApplication {
 			u1.setRole("ROLE_ADMIN");
 			UsuarioDao.save(u1);	
 
-			Profissional c1 = new Profissional();
-			c1.setEmail("jorge@email.com");
-			c1.setNome("Jorge Pires");
-			c1.setPassword(encoder.encode("jorge"));
-			c1.setRole("ROLE_PROFISSIONAL");
-			c1.setCpf("468.325.873-40");
-			c1.setTelefone("(16)99423-5549");
-			c1.setGenero("F");
-			c1.setDataNasc("11/02/2002");
-			ProfissionalDao.save(c1);
+			Profissional p1 = new Profissional();
+			p1.setEmail("jorge@email.com");
+			p1.setNome("Jorge Pires");
+			p1.setPassword(encoder.encode("jorge"));
+			p1.setRole("ROLE_PROFISSIONAL");
+			p1.setCpf("468.325.873-40");
+			p1.setTelefone("(16)99423-5549");
+			p1.setGenero("M");
+			p1.setDataNasc("11/02/2002");
+			ProfissionalDao.save(p1);
 			
-			Empresa l1 = new Empresa();
-			l1.setEmail("ufscar@email.com");
-			l1.setNome("Ufscar");
-			l1.setPassword(encoder.encode("ufscar"));
-			l1.setRole("ROLE_EMPRESA");
-			l1.setCnpj("12.345.678/0001-90");
-			l1.setCidade("São Carlos");
-			EmpresaDao.save(l1);
+			Empresa e1 = new Empresa();
+			e1.setEmail("ufscar@email.com");
+			e1.setNome("Ufscar");
+			e1.setPassword(encoder.encode("ufscar"));
+			e1.setRole("ROLE_EMPRESA");
+			e1.setCnpj("12.345.678/0001-90");
+			e1.setCidade("São Carlos");
+			EmpresaDao.save(e1);
 
-			Entrevista lo1 = new Entrevista();
-			lo1.setData("30/07/2023 15:00");
-			lo1.setProfissional(c1);
-			lo1.setEmpresa(l1);
-			EntrevistaDao.save(lo1);
+			Entrevista en1 = new Entrevista();
+			en1.setData("30/07/2023 15:00");
+			en1.setProfissional(p1);
+			en1.setEmpresa(e1);
+			EntrevistaDao.save(en1);
 
 		};
 	}

@@ -28,7 +28,7 @@
 
                             <th sec:authorize="hasRole('ROLE_PROFISSIONAL')" th:text="#{entrevista.empresa.label}"></th>
                             <th sec:authorize="hasRole('ROLE_EMPRESA')" th:text="#{entrevista.profissional.label}"></th>
-                            <th th:text="#{acao.label}"></th>
+                            <th sec:authorize="hasRole('ROLE_PROFISSIONAL')" th:text="#{acao.label}"></th>
                         </tr>
                     </thead>
                     <tbody>
