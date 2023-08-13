@@ -39,7 +39,8 @@
                             <td sec:authorize="hasRole('ROLE_EMPRESA')" th:text="${entrevista.profissional.nome}"></td>
                             
                             <td sec:authorize="hasRole('ROLE_PROFISSIONAL')">
-                                <a class="btn btn-danger btn-sm" th:href="@{/entrevistas/excluir/{id}(id=${entrevista.id})}" role="button"> 
+                                <a class="btn btn-danger btn-sm" th:href="@{/entrevistas/excluir/{id}(id=${entrevista.id})}"
+                                    role="button" onclick="return confirm('Tem certeza disso?');">
                                     <span class="oi oi-brush" th:text="#{link.excluir.label}" aria-hidden="true"></span>
                                 </a>
                             </td>
