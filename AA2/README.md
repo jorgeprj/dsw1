@@ -18,7 +18,19 @@ mvn spring-boot:run
 localhost:8080
 ```
 
-## Usuários criados
+## Banco de Dados
+Foi utilizado o **MySQL** para a criação do banco de dados.
+```
+login: root
+senha: root
+```
+
+```
+nome da tabela: Empregos
+```
+
+Algumas coisas já estão adicionadas no banco:
+
 ### Admin
 
 ```
@@ -39,6 +51,13 @@ login: jorge@email.com
 senha: jorge
 ```
 
+### Entrevista
+
+```
+empresa: jorge@email.com
+profissional: jorge
+data/hora: 30/07/2023 15:00
+```
 
 #### R1
 
@@ -73,6 +92,8 @@ Divisão na implementação da funcionalidade: Lucas (40%), Jorge (60%)
 
 Divisão na implementação da funcionalidade: Lucas (40%), Jorge (60%)
 
+**Observação:** Só é possível marcar um entrevista para o futuro, ou seja, o sistema não permite marcar uma entrevista para algum data/horário que já passou.
+
 
 #### R6
 
@@ -83,9 +104,9 @@ Divisão na implementação da funcionalidade: Lucas (40%), Jorge (60%)
 
 #### R7
 
-(X) Implementado  ( ) Parcialmente implementado ( ) Não implementado
+( ) Implementado  ( ) Parcialmente implementado (X) Não implementado
 
-Divisão na implementação da funcionalidade: Lucas (40%), Jorge (60%)
+Divisão na implementação da funcionalidade:
 
 #### R8
 
