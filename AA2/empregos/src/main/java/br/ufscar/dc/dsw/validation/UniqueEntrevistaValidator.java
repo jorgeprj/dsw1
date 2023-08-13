@@ -1,5 +1,9 @@
 package br.ufscar.dc.dsw.validation;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
@@ -16,10 +20,7 @@ public class UniqueEntrevistaValidator implements ConstraintValidator<UniqueEntr
     private IEntrevistaDAO dao;
 
     @Override
-    public boolean isValid(Entrevista locacao, ConstraintValidatorContext context) {
-        if(dao != null && locacao != null) {
-        	return dao.buscarEntrevistasPorProfissionalEEmpresaEData(locacao.getProfissional().getId(), locacao.getEmpresa().getId(), locacao.getData()).isEmpty();
-        }
+    public boolean isValid(Entrevista entrevista, ConstraintValidatorContext context) {
         return true;
     }
 }
