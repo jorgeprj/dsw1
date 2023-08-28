@@ -8,9 +8,11 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import br.ufscar.dc.dsw.validation.UniqueCnpj;
 import javax.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @SuppressWarnings("serial")
+@JsonIgnoreProperties(value = { "entrevistas" })
 @Entity
 @Table(name = "Empresa")
 public class Empresa extends Usuario {

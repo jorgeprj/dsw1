@@ -11,8 +11,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
- 
+@JsonIgnoreProperties(value = { "entrevistas" })
 @Entity
 @Table(name = "Profissional")
 public class Profissional extends Usuario {
