@@ -11,6 +11,8 @@ import br.ufscar.dc.dsw.domain.Entrevista;
 @SuppressWarnings("unchecked")
 public interface IEntrevistaDAO extends CrudRepository<Entrevista, Long>{
 
+	List<Entrevista> findAll();
+
 	Entrevista findById(long id);
 
 	@Query("SELECT entrevista FROM Entrevista entrevista WHERE entrevista.profissional.id = ?1")

@@ -8,6 +8,8 @@ public interface IEntrevistaService {
 
 	Entrevista buscarPorId(Long id);
 
+	List<Entrevista> buscarTodos();
+
 	List<Entrevista> buscarTodosPorProfissional(Long id);
 
 	List<Entrevista> buscarTodosPorEmpresa(Long id);

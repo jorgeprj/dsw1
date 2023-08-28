@@ -25,6 +25,10 @@ public class EntrevistaService implements IEntrevistaService {
 		dao.deleteById(id);
 	}
 	
+	public List<Entrevista> buscarTodos(){
+		return dao.findAll();
+	}
+	
 	@Transactional(readOnly = true)
     public List<Entrevista> buscarEntrevistasPorProfissionalEEmpresaEData(Long profissionalId, Long empresaId, String data) {
         return dao.buscarEntrevistasPorProfissionalEEmpresaEData(profissionalId.longValue(), empresaId.longValue(), data);
