@@ -85,7 +85,6 @@ public class EmpresaRestController {
 	}
     
 	@PostMapping(path = "/empresas")
-	//@ResponseBody
 	public ResponseEntity<Empresa> cria(@RequestBody JSONObject json) {
 		try {
 			if (isJSONValid(json.toString())) {
