@@ -10,8 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.ufscar.dc.dsw.security.UsuarioDetailsServiceImpl;
 
-
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -42,23 +40,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-				.antMatchers("/", "/index", "/error").permitAll()
-				.antMatchers("/login/**", "/js/**", "/css/**", "/image/**", "/webjars/**").permitAll()
-				.antMatchers("/entrevistas/listar", "/empresas/").permitAll()
-				.antMatchers("/admin/**").hasRole("ADMIN")
-				.antMatchers("/profissionais/**").hasRole("ADMIN")
-				.antMatchers("/empresas/**").hasRole("ADMIN")
-                .antMatchers("/entrevistas/cadastrar").hasRole("PROFISSIONAL")
-                .antMatchers("/entrevistas/listar").authenticated()
-				.anyRequest().authenticated()
-			.and()
-				.formLogin()
-				.loginPage("/login")
-				.permitAll()
-			.and()
-				.logout()
-				.logoutSuccessUrl("/")
-				.permitAll();
+		http.csrf().disable().authorizeRequests()
+		// Controladores REST
+		.antMatchers("/profissionais", "/empresas", "/entrevistas").permitAll()
+		.antMatchers("/profissionais/{\\d+}", "/empresas/{\\d+}").permitAll()
+		.antMatchers("/entrevistas/{\\d+}").permitAll()
+		.antMatchers("/empresas/cidades/{\\w+}").permitAll()
+		.antMatchers("/entrevistas/profissionais/{\\d+}").permitAll()
+		.antMatchers("/entrevistas/empresas/{\\d+}").permitAll()
+		.antMatchers("/", "/index", "/error").permitAll()
+		.antMatchers("/login/**", "/js/**", "/css/**", "/image/**", "/webjars/**").permitAll()
+		.antMatchers("/entrevistas/listar", "/empresas/").permitAll()
+		.antMatchers("/admin/**").hasRole("ADMIN")
+		.antMatchers("/profissionais/**").hasRole("ADMIN")
+		.antMatchers("/empresas/**").hasRole("ADMIN")
+		.antMatchers("/entrevistas/cadastrar").hasRole("PROFISSIONAL")
+		.antMatchers("/entrevistas/listar").authenticated()
+		.anyRequest().authenticated()
+		.and()
+			.formLogin().loginPage("/login").permitAll()
+		.and()
+			.logout().logoutSuccessUrl("/").permitAll();
 	}
 }
