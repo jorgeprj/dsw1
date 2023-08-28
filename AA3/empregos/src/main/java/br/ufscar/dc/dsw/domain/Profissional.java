@@ -13,7 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.CascadeType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(value = { "entrevistas" })
+@JsonIgnoreProperties(value = { "entrevistas", "role", "password" })
+
 @Entity
 @Table(name = "Profissional")
 public class Profissional extends Usuario {
