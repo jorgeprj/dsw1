@@ -18,7 +18,7 @@ public class EmpresaService implements IEmpresaService {
 	@Autowired
 	IEmpresaDAO dao;
 	@Autowired
-	IEntrevistaDAO locacaoDao;
+	IEntrevistaDAO entrevistaDao;
 	
 	public void salvar(Empresa empresa) {
 		dao.save(empresa);
@@ -31,7 +31,7 @@ public class EmpresaService implements IEmpresaService {
             List<Entrevista> entrevistas = empresa.getEntrevistas();
             for (Entrevista entrevista : entrevistas) {
                 entrevista.setEmpresa(null); 
-                locacaoDao.save(entrevista); 
+                entrevistaDao.save(entrevista); 
             }
             dao.delete(empresa);
 		}
