@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+	
+    <section class="layout-content" layout:fragment="corpo">
+     
+        <div class="container" id="listagem" >
+            <div class="navbar-header">
+                <div style="right: 20px; position: absolute">
+                    <a th:href="@{''(lang=pt)}"><img alt=""
+                        th:src="@{/image/Brasil.gif}" style="width: 30px;" /></a> <a
+                        th:href="@{''(lang=en)}"><img alt=""
+                        th:src="@{/image/EUA.gif}" style="width: 30px;" /></a>
+                </div>
+                <h2><span th:text="#{entrevista.listar.label}"></h2>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped" border="1">
+					<thead>
+                        <tr>
+                            <th>#</th>
+                            <th th:text="#{entrevista.data.label}"></th>
+
+                            <th sec:authorize="hasRole('ROLE_PROFISSIONAL')" th:text="#{entrevista.empresa.label}"></th>
+                            <th sec:authorize="hasRole('ROLE_EMPRESA')" th:text="#{entrevista.profissional.label}"></th>
+                            <th sec:authorize="hasRole('ROLE_PROFISSIONAL')" th:text="#{acao.label}"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="entrevista : ${entrevistas}">
+                            <td th:text="${entrevista.id}"></td>
+                            <td th:text="${entrevista.data}"></td>
+                            <td sec:authorize="hasRole('ROLE_PROFISSIONAL')" th:text="${entrevista.empresa.nome}"></td>
+                            <td sec:authorize="hasRole('ROLE_EMPRESA')" th:text="${entrevista.profissional.nome}"></td>
+                            
+                            <td sec:authorize="hasRole('ROLE_PROFISSIONAL')">
+                                <a class="btn btn-danger btn-sm" th:href="@{/entrevistas/excluir/{id}(id=${entrevista.id})}"
+                                    role="button" onclick="return confirm('Tem certeza disso?');">
+                                    <span class="oi oi-brush" th:text="#{link.excluir.label}" aria-hidden="true"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+	<a class="btn btn-primary mb-2" type="button"
+        href="javascript:history.back()"><span th:text="#{previous.message}"></span></a>
+
+    <a class="btn btn-primary mb-2" type="button"
+        th:href="@{/home}"><span th:text="#{home.message}"></span></a>
+</body>
+</html>

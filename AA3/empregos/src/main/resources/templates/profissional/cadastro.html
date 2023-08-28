@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<meta charset="UTF-8" />
+</head>
+<body>
+	<th:block th:fragment="header">
+		<nav class="navbar navbar-inverse navbar-static-top">
+			<div class="container">
+				<div class="navbar-header">
+					<div style="right: 20px; position: absolute">
+						<a th:href="@{''(lang=pt)}"><img alt=""
+							th:src="@{/image/Brasil.gif}" style="width: 30px;" /></a> <a
+							th:href="@{''(lang=en)}"><img alt=""
+							th:src="@{/image/EUA.gif}" style="width: 30px;" /></a>
+					</div>
+					<a class="btn btn-primary mb-2" type="button"
+        				href="javascript:history.back()"><span th:text="#{previous.message}"></span></a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a th:href="@{/}">Home</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+	</th:block>
+	<h2><span th:text="#{profissional.cadastro.label}"></h2>
+	<section class="layout-content" layout:fragment="corpo">
+		<div class="container" id="cadastro">
+
+			<div th:replace="fragments/alert"></div>
+
+			<form
+				th:action="${profissional.id == null} ? @{/profissionais/salvar} : @{/profissionais/editar}"
+				th:object="${profissional}" method="POST">
+
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label th:text="#{profissional.email.label}" for="email"></label> 
+						<input type="text" class="form-control" id="email"
+							th:placeholder="#{profissional.email.label}"
+							autofocus="autofocus" th:field="*{email}"
+							th:classappend="${#fields.hasErrors('email')} ? is-invalid" required/>
+
+						<div class="invalid-feedback">
+							<span th:errors="*{email}"></span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label th:text="#{profissional.password.label}" for="password"></label>
+						<input type="password" class="form-control" id="password"
+							   th:placeholder="#{profissional.password.label}" autofocus="autofocus"
+							   th:field="*{password}"
+							   th:classappend="${#fields.hasErrors('password')} ? is-invalid" required/>
+					
+						<div class="invalid-feedback">
+							<span th:errors="*{password}"></span>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label th:text="#{profissional.nome.label}" for="nome"></label> 
+						<input type="text" class="form-control" id="nome" th:field="*{nome}"
+							th:placeholder="#{profissional.nome.label}" autofocus="autofocus"
+							th:classappend="${#fields.hasErrors('nome')} ? is-invalid" required/>
+							
+						<div class="invalid-feedback">
+							<span th:errors="*{nome}"></span>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-6">
+                        <label th:text="#{profissional.cpf.label}" for="cpf"></label> 
+                        <input th:if="${profissional.id != null}" readonly type="text" class="form-control" id="cpf" th:field="*{cpf}"
+                            autofocus="autofocus" placeholder="___.___.___-__"/>	
+                        <input th:unless="${profissional.id != null}" type="text" class="form-control" id="cpf" th:field="*{cpf}"
+                            autofocus="autofocus" placeholder="___.___.___-__" th:classappend="${#fields.hasErrors('cpf')} ? is-invalid" 
+                            data-mask="000.000.000-00" data-mask-reverse="true" title="#{profissional.cpf.invalido}" required/>
+                        <div class="invalid-feedback">
+                            <span th:errors="*{cpf}"></span>
+							<span th:if="${#fields.hasErrors('cpf')}"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+						<label th:text="#{profissional.telefone.label}" for="telefone"></label> 
+						<input type="text" class="form-control" id="telefone" th:field="*{telefone}"
+							th:placeholder="#{profissional.telefone.label}" autofocus="autofocus"
+							th:classappend="${#fields.hasErrors('telefone')} ? is-invalid" title="#{profissional.cpf.invalido}" required/>
+							
+						<div class="invalid-feedback">
+							<span th:errors="*{telefone}"></span>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label th:text="#{profissional.genero.label}" for="genero"></label> 
+						<select id="genero" class="form-control" th:field="*{genero}" th:placeholder="#{profissional.genero.label}"
+							th:classappend="${#fields.hasErrors('genero')} ? is-invalid">
+							<option value="M">M</option>
+							<option value="F">F</option>
+						</select>
+
+						<div class="invalid-feedback">
+							<span th:errors="*{role}"></span>
+						</div>
+					</div>
+					          
+                    <div class="form-group col-md-6">
+						<label th:text="#{profissional.dataNasc.label}" for="dataNasc"></label> 
+						<input type="text" class="form-control" id="dataNasc" th:field="*{dataNasc}"
+							th:placeholder="#{profissional.dataNasc.label}" autofocus="autofocus"
+							th:classappend="${#fields.hasErrors('dataNasc')} ? is-invalid" pattern="\d{2}/\d{2}/\d{4}" 
+							title="Digite uma data válida (dd/mm/aaaa)" required/>
+							
+						<div class="invalid-feedback">
+							<span th:errors="*{dataNasc}"></span>
+						</div>
+					</div>
+					
+
+					<div class="form-group col-md-6">
+						<label th:text="#{profissional.role.label}" for="role"></label> 
+						<select id="role" class="form-control" th:field="*{role}"
+							th:classappend="${#fields.hasErrors('role')} ? is-invalid" required>
+							<option value="ROLE_PROFISSIONAL">ROLE_PROFISSIONAL</option>
+						</select>
+
+						<div class="invalid-feedback">
+							<span th:errors="*{role}"></span>
+						</div>
+					</div>
+				</div>
+
+				<input type="hidden" id="id" th:field="*{id}" />
+				<button type="submit" th:text="#{button.salvar.label}"
+					class="btn btn-primary btn-sm"></button>
+			</form>
+		</div>
+	</section>
+</body>
+</html>
