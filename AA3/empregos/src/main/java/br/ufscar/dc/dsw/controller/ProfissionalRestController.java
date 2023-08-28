@@ -83,6 +83,7 @@ public class ProfissionalRestController {
 			if (isJSONValid(json.toString())) {
 				Profissional profissional = new Profissional(); 
 				parse(profissional, json);
+				profissional.setRole("PROFISSIONAL");
 				service.salvar(profissional);
 				return ResponseEntity.ok(profissional);
 			} else {
