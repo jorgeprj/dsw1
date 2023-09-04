@@ -20,8 +20,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Profissional extends Usuario {
     
     @NotBlank
-	@UniqueCpf(message = "CPF já cadastrado")
-	@Size(min = 11, max = 15, message = "Número de caracteres inválido")
+	@UniqueCpf(message = "{Unique.profissional.CPF}")
+	@Size(min = 11, max = 15, message = "{Size.profissional.CPF}")
     @Column(nullable = false, length = 45 )
     private String cpf;
     
