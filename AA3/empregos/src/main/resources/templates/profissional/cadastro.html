@@ -6,6 +6,20 @@
 <meta charset="UTF-8" />
 </head>
 <body>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+		const form = document.getElementById('cadastro'); 
+		const cpfInput = document.getElementById('cpf');
+
+		form.addEventListener('submit', function (event) {
+			const cpfValue = cpfInput.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+			if (!/^\d{11}$/.test(cpfValue)) {
+				alert('CPF inválido. Certifique-se de inserir 11 números.');
+				event.preventDefault(); // Impede o envio do formulário
+				}
+			});
+		});
+	</script>
 	<th:block th:fragment="header">
 		<nav class="navbar navbar-inverse navbar-static-top">
 			<div class="container">
@@ -113,7 +127,7 @@
 					          
                     <div class="form-group col-md-6">
 						<label th:text="#{profissional.dataNasc.label}" for="dataNasc"></label> 
-						<input type="text" class="form-control" id="dataNasc" th:field="*{dataNasc}"
+						<input type="date" class="form-control" id="dataNasc" th:field="*{dataNasc}"
 							th:placeholder="#{profissional.dataNasc.label}" autofocus="autofocus"
 							th:classappend="${#fields.hasErrors('dataNasc')} ? is-invalid" pattern="\d{2}/\d{2}/\d{4}" 
 							title="Digite uma data válida (dd/mm/aaaa)" required/>

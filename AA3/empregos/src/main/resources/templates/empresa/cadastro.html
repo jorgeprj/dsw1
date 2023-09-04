@@ -7,6 +7,22 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head>
 <body>
+		<script>
+				document.addEventListener('DOMContentLoaded', function () {
+				const form = document.getElementById('cadastro'); 
+				const cnpjInput = document.getElementById('cnpj');
+
+				form.addEventListener('submit', function (event) {
+					const cnpjValue = cnpjInput.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+					if (!/^\d{14}$/.test(cnpjValue)) {
+						// Se o CNPJ não tiver exatamente 14 dígitos, exiba uma mensagem de erro
+						alert('CNPJ inválido. Certifique-se de inserir 11 números.');
+						event.preventDefault(); // Impede o envio do formulário
+					}
+				});
+			});
+		</script>
+
 
 	<th:block th:fragment="header">
 		<nav class="navbar navbar-inverse navbar-static-top">
