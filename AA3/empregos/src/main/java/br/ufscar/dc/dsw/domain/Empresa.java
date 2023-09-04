@@ -18,8 +18,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Empresa extends Usuario {
 
 	@NotBlank
-    @UniqueCnpj (message = "CNPJ já cadastrado")
-	@Size(min = 13, max = 18, message = "Número de caracteres inválido")
+    @UniqueCnpj (message = "{Unique.empresa.CNPJ}")
+	@Size(min = 13, max = 18, message = "{Size.empresa.CNPJ}")
 	@Column(nullable = false, unique = true, length = 60)
 	private String cnpj;
 

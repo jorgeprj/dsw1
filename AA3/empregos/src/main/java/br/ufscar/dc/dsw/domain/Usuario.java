@@ -15,7 +15,7 @@ import br.ufscar.dc.dsw.validation.UniqueEmail;
 public class Usuario extends AbstractEntity<Long> {
 	
 	@NotBlank
-	@UniqueEmail(message = "Email já cadastrado")
+	@UniqueEmail(message = "{Unique.usuario.email}")
     @Column(nullable = false, length = 45, unique = true)
     private String email;
     
