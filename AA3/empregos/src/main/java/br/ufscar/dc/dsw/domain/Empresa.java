@@ -10,9 +10,11 @@ import br.ufscar.dc.dsw.validation.UniqueCnpj;
 import javax.persistence.CascadeType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(value = { "entrevistas", "role", "password" })
 
 @SuppressWarnings("serial")
-@JsonIgnoreProperties(value = { "entrevistas" })
 @Entity
 @Table(name = "Empresa")
 public class Empresa extends Usuario {
