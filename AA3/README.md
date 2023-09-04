@@ -1,4 +1,4 @@
-# AA3: desenvolvimento de um sistema utilizando Spring MVC, Spring Data JPA, Spring Security e Thymeleaf
+# AA3: desenvolvimento de uma API REST 
 
 ## Sistema 
 Sistema para oferta de vagas de empregos 
@@ -15,7 +15,7 @@ mvn spring-boot:run
 - Depois é só entrar na web:
 
 ```
-localhost:8080
+localhost:8081
 ```
 
 ## Banco de Dados
@@ -59,69 +59,47 @@ profissional: jorge
 data/hora: 30/07/2023 15:00
 ```
 
-#### R1
+## API REST
 
-(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+### Empresas
+```
+localhost:8081/empresas/
+```
 
-Divisão na implementação da funcionalidade: Lucas (40%), Jorge (60%)
+```
+localhost:8081/empresas/{id}
+```
 
+```
+localhost:8081/empresas/cidades/{nome}
+```
 
-#### R2
+```
+localhost:8081/empresas/{id}
+```
 
-(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+### Profissional
+```
+localhost:8081/profissionais/
+```
 
-Divisão na implementação da funcionalidade: Lucas (40%), Jorge (60%)
+```
+localhost:8081/profissionais/{id}
+```
 
+### Entrevistas
+```
+localhost:8081/entrevistas/
+```
 
-#### R3
+```
+localhost:8081/entrevistas/{id}
+```
 
-(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+```
+localhost:8081/entrevistas/empresas/{id}
+```
 
-Divisão na implementação da funcionalidade: Lucas (40%), Jorge (60%)
-
-
-#### R4
-
-(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
-
-Divisão na implementação da funcionalidade: Lucas (40%), Jorge (60%)
-
-#### R5
-
-(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
-
-Divisão na implementação da funcionalidade: Lucas (40%), Jorge (60%)
-
-**Observação:** Só é possível marcar um entrevista para o futuro, ou seja, o sistema não permite marcar uma entrevista para algum data/horário que já passou.
-
-
-#### R6
-
-(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
-
-Divisão na implementação da funcionalidade: Lucas (40%), Jorge (60%)
-
-
-#### R7
-
-( ) Implementado  ( ) Parcialmente implementado (X) Não implementado
-
-Divisão na implementação da funcionalidade:
-
-#### R8
-
-(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
-
-Divisão na implementação da funcionalidade: Lucas (40%), Jorge (60%)
-
-#### R9
-
-(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
-
-Divisão na implementação da funcionalidade: Jorge (100%)
-
-#### R10
-
-(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
-
-Divisão na implementação da funcionalidade: Jorge (100%)
+```
+localhost:8081/entrevistas/profissionais/{id}
+```

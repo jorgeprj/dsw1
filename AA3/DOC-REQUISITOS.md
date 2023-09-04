@@ -1,4 +1,4 @@
-# AA3: desenvolvimento de um sistema utilizando Spring MVC, Spring Data JPA, Spring Security e Thymeleaf
+# AA3: desenvolvimento de uma API REST
 
 **(UFSCar)**
 **Grupo 1: Jorge Pires & Lucas Abbiati**
@@ -72,15 +72,15 @@ O sistema deve incorporar os seguintes requisitos:
 
 - REST API -- Retorna a entrevista de id = {id} [**R**ead - **CRUD**]
     
-    GET http://localhost:8080/entrevistas /{id}
+    GET http://localhost:8080/entrevistas/{id}
 
 - REST API -- Retorna a lista das entrevistas  do cliente de id = {id} [**R**ead - **CRUD**]
 
-    GET http://localhost:8080/entrevistas /profissionais/{id}
+    GET http://localhost:8080/entrevistas/profissionais/{id}
 
 - REST API -- Retorna a lista de entrevistas  da empresa de id = {id} [**R**ead - **CRUD**]
 
-    GET http://localhost:8080/entrevistas /empresas/{id}
+    GET http://localhost:8080/entrevistas/empresas/{id}
 
 Obs 2: Em todas as funcionalidades mencionadas acima, não há necessidade de autenticação
 (login)
